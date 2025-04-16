@@ -15,31 +15,35 @@
 
     <!-- Section Layanan Surat -->
     <section class="layanan-section">
-      <h2>Layanan Surat</h2>
-      <div class="card-container">
-        <SuratCard 
-          title="Surat Peminjaman" 
-          description="Ajukan surat peminjaman ruangan atau alat untuk keperluan akademik." 
-          image="peminjaman.png"
-        />
-        <SuratCard 
-          title="Surat Pengantar Pengambilan Data TA" 
-          description="Diperlukan untuk mengambil data dari instansi untuk Tugas Akhir." 
-          image="data-ta.png"
-        />
-        <SuratCard 
-          title="Surat Pengantar Kerja Praktik" 
-          description="Digunakan untuk mendaftar kerja praktik di perusahaan/instansi." 
-          image="kerja-praktik.png"
-        />
-        <SuratCard 
-          title="Surat Rekomendasi Exchange/Beasiswa/Lomba" 
-          description="Surat rekomendasi resmi dari jurusan untuk keperluan beasiswa dan lainnya." 
-          image="rekomendasi.png"
-        />
+      <div class="layanan-container">
+        <div class="card-container">
+          <SuratCard 
+            title="Surat Peminjaman" 
+            description="Ajukan surat peminjaman ruangan atau alat untuk keperluan akademik." 
+            image="peminjaman.png"
+          />
+          <SuratCard 
+            title="Surat Pengantar Pengambilan Data TA" 
+            description="Diperlukan untuk mengambil data dari instansi untuk Tugas Akhir." 
+            image="data-ta.png"
+          />
+          <SuratCard 
+            title="Surat Pengantar Kerja Praktik" 
+            description="Digunakan untuk mendaftar kerja praktik di perusahaan/instansi." 
+            image="kerja-praktik.png"
+          />
+          <SuratCard 
+            title="Surat Rekomendasi Exchange/Beasiswa/Lomba" 
+            description="Surat rekomendasi resmi dari jurusan untuk keperluan beasiswa dan lainnya." 
+            image="rekomendasi.png"
+          />
+        </div>
       </div>
     </section>
   </div>
+  <section class="process-section">
+    <TimelineProcess />
+  </section>
       <!-- Footer -->
       <footer class="footer">
       <div class="footer-content">
@@ -56,11 +60,13 @@
 
 <script>
 import SuratCard from "@/components/SuratCard.vue";
+import TimelineProcess from "@/components/TimelineProcess.vue";
 
 export default {
   name: "HomePage",
   components: {
-    SuratCard
+    SuratCard,
+    TimelineProcess
   }
 };
 </script>
@@ -84,15 +90,27 @@ h1 {
   font-weight: bold;
 }
 .layanan-section {
+  background-color: #003366;
   height: calc(100vh - 70px);
   background-color: #f5f5f5;
-  padding: 2rem 4rem;
+  padding: 3rem 0;
   text-align: center;
+  justify-content: center;
 }
 .layanan-section h2 {
   background-color: #f5f5f5;
   color: #003366;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+}
+
+.layanan-container {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #003366;
+  padding: 2rem;
+  border-radius: 2rem;
 }
 .card-container {
   display: flex;
@@ -106,6 +124,11 @@ h1 {
   text-align: center;
   padding: 2rem 1rem;
   font-size: 0.95rem;
+}
+.process-section {
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
 }
 .footer-content p {
   margin: 0.3rem 0;
