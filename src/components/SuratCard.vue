@@ -19,12 +19,16 @@
   
   <style scoped>
   .surat-card {
-    justify-content: center;
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    width: 280px;
+    width: 180px;
+    height: 270px;
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     transition: transform 0.3s ease;
   }
   .surat-card:hover {

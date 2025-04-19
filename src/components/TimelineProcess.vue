@@ -35,7 +35,7 @@
   <style scoped>
   .proses-section {
     background-color: #003366;
-    padding: 3rem 3rem;
+    padding: 3rem 1.5rem;
     display: flex;
     justify-content: center;
   }
@@ -43,25 +43,25 @@
   .proses-container {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     max-width: 1000px;
   }
   
-  .step:nth-child(odd) {
-    grid-row: 1;
-  }
-  .step:nth-child(even) {
-    grid-row: 2;
-    margin-top: 2rem;
+  /* Menghilangkan posisi baris ganjil/genap agar tidak "patah" di layar kecil */
+  .step {
+    display: flex;
+    justify-content: center;
   }
   
   .card-proses {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.8); /* transparan untuk efek glassy */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1rem;
     border-radius: 1rem;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
@@ -82,22 +82,50 @@
   }
   
   .timeline-line {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: #fff;
-    z-index: 1;
+    display: none; /* Sembunyikan garis horizontal di mobile */
   }
   
   .trophy {
-    position: absolute;
-    right: -2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    z-index: 2;
+    display: none; /* Sembunyikan di mobile juga */
+  }
+  
+  /* Media Query untuk layar besar (tampilkan garis dan trophy) */
+  @media (min-width: 768px) {
+    .proses-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
+  
+    .step:nth-child(odd) {
+      grid-row: 1;
+    }
+  
+    .step:nth-child(even) {
+      grid-row: 2;
+      margin-top: 2rem;
+    }
+  
+    .timeline-line {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #fff;
+      z-index: 1;
+    }
+  
+    .trophy {
+      display: block;
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      z-index: 2;
+    }
   }
   </style>
+  
   

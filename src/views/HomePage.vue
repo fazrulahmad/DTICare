@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <div class="hero-section">
+    <section class="hero-section">
       <div class="overlay">
         <h1>WELCOME TO DTI-CARE</h1>
         <p>
@@ -11,9 +10,10 @@
           Kami hadir untuk mempermudah akses layanan akademik dan administratif secara cepat, transparan, dan efisien.
         </p>
       </div>
-    </div>
+    </section>
 
     <!-- Section Layanan Surat -->
+  <div class="overlay-layanan">
     <section class="layanan-section">
       <div class="layanan-container">
         <div class="card-container">
@@ -41,9 +41,12 @@
       </div>
     </section>
   </div>
+
+<div class="overlay-process">
   <section class="process-section">
     <TimelineProcess />
   </section>
+</div>
       <!-- Footer -->
       <footer class="footer">
       <div class="footer-content">
@@ -74,11 +77,22 @@ export default {
 <style scoped>
 .hero-section {
   height: calc(100vh - 70px);
-  background-image: url('@/assets/dti-care-bg.jpg');
+  background-image: url('@/assets/background.png');
   background-size: cover;
   background-position: center;
   position: relative;
 }
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px; /* tinggi shadow */
+  background: linear-gradient(to top, rgba(73, 219, 255, 0.4), transparent);
+  z-index: 0;
+}
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
@@ -89,13 +103,32 @@ h1 {
   font-size: 4rem;
   font-weight: bold;
 }
+.overlay-layanan {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 0rem 0rem;
+  height: 77.5%;
+}
 .layanan-section {
-  background-color: #003366;
+  background-image: url('@/assets/background.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
   height: calc(100vh - 70px);
-  background-color: #f5f5f5;
-  padding: 3rem 0;
+  z-index: 1;
+  padding: 3rem 1rem;
   text-align: center;
   justify-content: center;
+}
+.layanan-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px; /* tinggi shadow */
+  background: linear-gradient(to top, rgba(73, 219, 255, 0.4), transparent);
+  z-index: 0;
 }
 .layanan-section h2 {
   background-color: #f5f5f5;
@@ -125,10 +158,29 @@ h1 {
   padding: 2rem 1rem;
   font-size: 0.95rem;
 }
+.overlay-process {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 0rem 0rem;
+  height: 77.5%;
+}
 .process-section {
+  background-image: url('@/assets/background.png');
+  height: calc(100vh - 70px);
   padding: 3rem 1rem;
-  display: flex;
-  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.process-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px; /* tinggi shadow */
+  background: linear-gradient(to top, rgba(73, 219, 255, 0.4), transparent);
+  z-index: 0;
 }
 .footer-content p {
   margin: 0.3rem 0;
