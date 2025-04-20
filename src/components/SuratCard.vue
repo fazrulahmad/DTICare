@@ -1,5 +1,5 @@
 <template>
-    <div class="surat-card">
+    <div class="surat-card" @click="goToForm">
       <img :src="require(`@/assets/${image}`)" :alt="title" class="card-image" />
       <h3>{{ title }}</h3>
       <p>{{ description }}</p>
@@ -13,13 +13,18 @@
       title: String,
       description: String,
       image: String
+    },
+    methods: {
+    goToForm() {
+      this.$router.push('/form-layanan')
     }
+  }
   };
   </script>
   
   <style scoped>
   .surat-card {
-    width: 180px;
+    width: 220px;
     height: 270px;
     background-color: white;
     border-radius: 1rem;

@@ -1,18 +1,16 @@
 <template>
   <div id="app">
     <Navbar />
-    <Home />
+    <router-view /> <!-- GANTI Home dengan router-view -->
   </div>
 </template>
 
 <script>
 import Navbar from './components/BaseNavbar.vue'
-import Home from './views/HomePage.vue'
 
 export default {
   components: {
-    Navbar,
-    Home
+    Navbar
   }
 }
 </script>
