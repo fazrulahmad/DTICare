@@ -24,37 +24,55 @@
   
   <style scoped>
   .surat-card {
-    width: 220px;
-    height: 270px;
-    background-color: white;
-    border-radius: 1rem;
-    padding: 1.5rem 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    transition: transform 0.3s ease;
-  }
-  .surat-card:hover {
-    transform: translateY(-5px);
-  }
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+}
 
-  .card-image {
+.surat-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-image {
   width: 60%;
-  height: 150px;
-  object-fit: fill;
+  max-height: 150px;
+  object-fit: contain;
   border-radius: 1rem;
   margin-bottom: 1rem;
 }
 
-  h3 {
-    margin-bottom: 0.5rem;
-    color: #003366;
+h3 {
+  margin-bottom: 0.5rem;
+  color: #003366;
+  text-align: center;
+}
+
+p {
+  font-size: 0.95rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Tambahan media query untuk mobile */
+@media (max-width: 480px) {
+  .surat-card {
+    max-width: 90%;
+    padding: 1rem;
   }
-  p {
-    font-size: 0.95rem;
-    color: #333;
+
+  .card-image {
+    width: 70%;
   }
+}
   </style>
   

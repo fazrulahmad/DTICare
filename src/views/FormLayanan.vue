@@ -53,7 +53,7 @@
   <style scoped>
   .form-layanan-container {
     min-height: 100vh;
-    background: #f3f4f6;
+    background: white;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -62,7 +62,7 @@
   }
   
   .form-card {
-    background: white;
+    background: #003366;
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -73,13 +73,14 @@
   .form-title {
     font-size: 1.75rem;
     font-weight: bold;
-    color: #003366;
+    color: white;
     margin-bottom: 1.5rem;
     text-align: center;
   }
   
   .form-label {
     font-weight: 600;
+    color: white;
     margin-bottom: 0.5rem;
     display: block;
   }
