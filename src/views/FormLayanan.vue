@@ -53,7 +53,9 @@
   <style scoped>
   .form-layanan-container {
     min-height: 100vh;
-    background: white;
+    background-image: url('@/assets/background.png');
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: center;
     align-items: flex-start;
