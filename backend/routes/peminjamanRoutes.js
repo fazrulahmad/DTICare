@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const Surat = require('../models/peminjamanModel.js');
+const peminjaman = require('../models/peminjamanModel.js');
 
-// Submit surat
+// Submit peminjaman
 router.post('/', async (req, res) => {
   try {
-    const newSurat = new Surat(req.body);
-    await newSurat.save();
-    res.status(201).json(newSurat);
+    const newpeminjaman = new peminjaman(req.body);
+    await newpeminjaman.save();
+    res.status(201).json(newpeminjaman);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Get semua surat
+// Get semua peminjaman
 router.get('/', async (req, res) => {
   try {
-    const suratList = await Surat.find();
-    res.json(suratList);
+    const peminjamanList = await peminjaman.find();
+    res.json(peminjamanList);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

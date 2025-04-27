@@ -4,6 +4,8 @@ const cors = require('cors');
 require('dotenv').config();
 
 const peminjamanRoutes = require('./routes/peminjamanRoutes.js');
+const rekomendasiRoutes = require('./routes/rekomendasiRoutes.js');
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -14,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/peminjaman', peminjamanRoutes);
+app.use('/api/rekomendasi', rekomendasiRoutes); 
 
 // Connect to MongoDB and start server
 mongoose.connect(process.env.MONGO_URI)
