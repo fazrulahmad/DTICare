@@ -4,7 +4,7 @@
     <form @submit.prevent="handleSubmit" class="form-body">
       <input v-model="formData.nomorSurat" type="text" placeholder="Nomor Surat HMIT (jika dari HMIT)" class="form-input" />
       <input v-model="formData.namaKegiatan" type="text" placeholder="Nama Kegiatan" class="form-input" />
-      <input v-model="formData.hariTanggal" type="text" placeholder="Hari/Tanggal" class="form-input" />
+      <input v-model="formData.hariTanggal" type="date" placeholder="Hari/Tanggal" class="form-input" />
       <input v-model="formData.pukul" type="text" placeholder="Pukul" class="form-input" />
       <input v-model="formData.tempat" type="text" placeholder="Tempat" class="form-input" />
       <input v-model="formData.nrp" type="text" placeholder="NRP yang Mengajukan" class="form-input" />
