@@ -5,8 +5,7 @@ require('dotenv').config();
 
 const peminjamanRoutes = require('./routes/peminjamanRoutes.js');
 const rekomendasiRoutes = require('./routes/rekomendasiRoutes.js');
-const statusRoutes = require('./routes/statusRoutes');
-
+const statusRoutes = require('./routes/statusRoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,12 +17,19 @@ app.use(express.json());
 // Routes
 app.use('/api/peminjaman', peminjamanRoutes);
 app.use('/api/rekomendasi', rekomendasiRoutes);
-app.use('/api/status', statusRoutes); 
+app.use('/api/status', statusRoutes);
+
+// Fallback route
+app.use((req, res) => {
+  res.status(404).json({ message: 'Endpoint tidak ditemukan.' });
+});
 
 // Connect to MongoDB and start server
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    console.log('MongoDB Connected!');
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    console.log('✅ MongoDB Connected!');
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
-  .catch(err => console.log(err));
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err.message);
+  });

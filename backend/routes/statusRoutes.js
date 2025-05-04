@@ -3,17 +3,34 @@ const router = express.Router();
 const Peminjaman = require('../models/peminjamanModel');
 const Rekomendasi = require('../models/rekomendasiModel');
 
-// GET semua status surat
+// Helper function to build date filter
+const buildDateFilter = (start, end) => {
+  if (start && end) {
+    return {
+      tanggalPengajuan: {
+        $gte: new Date(start),
+        $lte: new Date(end)
+      }
+    };
+  }
+  return {};
+};
+
+// GET semua status surat (dengan optional filter tanggal)
 router.get('/', async (req, res) => {
+  const { start, end } = req.query;
+
   try {
-    const peminjaman = await Peminjaman.find();
-    const rekomendasi = await Rekomendasi.find();
+    const dateFilter = buildDateFilter(start, end);
+
+    const peminjaman = await Peminjaman.find(dateFilter);
+    const rekomendasi = await Rekomendasi.find(dateFilter);
 
     const semuaStatus = [
       ...peminjaman.map(item => ({
         id: item._id,
         tipe: 'Peminjaman Ruangan',
-        nama: item.nama,
+        nama: item.namaPengaju,
         nrp: item.nrp,
         status: item.status,
         tanggalPengajuan: item.tanggalPengajuan
@@ -35,18 +52,22 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET status berdasarkan NRP
+// GET status berdasarkan NRP (dengan optional filter tanggal)
 router.get('/:nrp', async (req, res) => {
   const { nrp } = req.params;
+  const { start, end } = req.query;
+
   try {
-    const peminjaman = await Peminjaman.find({ nrp });
-    const rekomendasi = await Rekomendasi.find({ nrp });
+    const dateFilter = buildDateFilter(start, end);
+
+    const peminjaman = await Peminjaman.find({ nrp, ...dateFilter });
+    const rekomendasi = await Rekomendasi.find({ nrp, ...dateFilter });
 
     const statusMahasiswa = [
       ...peminjaman.map(item => ({
         id: item._id,
         tipe: 'Peminjaman Ruangan',
-        nama: item.nama,
+        nama: item.namaPengaju,
         nrp: item.nrp,
         status: item.status,
         tanggalPengajuan: item.tanggalPengajuan
