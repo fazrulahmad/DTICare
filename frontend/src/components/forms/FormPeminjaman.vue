@@ -38,6 +38,16 @@ export default {
     async handleSubmit() {
       try {
         await axios.post('http://localhost:5000/api/peminjaman', this.formData);
+        this.formData = {
+          nomorSurat: '',
+          namaKegiatan: '',
+          hariTanggal: '',
+          pukul: '',
+          tempat: '',
+          nrp: '',
+          namaPengaju: '',
+          nomorHp: ''
+        };
         alert('Form berhasil dikirim!');
       } catch (error) {
         console.error(error);

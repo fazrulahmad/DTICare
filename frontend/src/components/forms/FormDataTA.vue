@@ -68,6 +68,25 @@ export default {
         document.body.appendChild(link);
         link.click();
 
+        this.formData = {
+          nrp1: '',
+          nama1: '',
+          nama_pejabat: '',
+          nama_jabatan: '',
+          nama_institusi: '',
+          alamat: '',
+          tgl_mulai: '',
+          tgl_selesai: '',
+          kode: '',
+          nama_mk: '',
+          nama_dosen: '',
+          judul: '',
+          data_yang_diperlukan1: '',
+          catatan: '',
+          tanggal_pengajuan: '',
+          nama_pengaju: ''
+        };
+
         // Cleanup
         window.URL.revokeObjectURL(url);
         link.remove();

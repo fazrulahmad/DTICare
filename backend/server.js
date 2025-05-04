@@ -6,6 +6,7 @@ require('dotenv').config();
 const peminjamanRoutes = require('./routes/peminjamanRoutes.js');
 const rekomendasiRoutes = require('./routes/rekomendasiRoutes.js');
 const statusRoutes = require('./routes/statusRoutes.js');
+const dataTARoutes = require('./routes/dataTARoutes.js');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use('/api/peminjaman', peminjamanRoutes);
 app.use('/api/rekomendasi', rekomendasiRoutes);
 app.use('/api/status', statusRoutes);
+app.use('/api/dataTA', dataTARoutes);
 
 // Fallback route
 app.use((req, res) => {
