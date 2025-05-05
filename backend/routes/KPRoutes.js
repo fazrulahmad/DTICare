@@ -4,6 +4,9 @@ const path = require('path');
 const PizZip = require('pizzip');
 const Docxtemplater = require('docxtemplater');
 const DataKP = require('../models/KPModel.js'); 
+const sendDocx = require('../whatsapp/sendDocx');
+
+
 
 const router = express.Router();
 
@@ -40,8 +43,12 @@ router.post('/', async (req, res) => {
     const buffer = doc.getZip().generate({ type: 'nodebuffer' });
 
     const fileName = `Surat_Pengajuan_KP_${Date.now()}.docx`;
-    const outputPath = path.resolve(__dirname, `../generated/Surat_KP${Date.now}.docx`);
+    const outputPath = path.resolve(__dirname, `../generated/${fileName}.docx`);
     fs.writeFileSync(outputPath, buffer);
+
+    // Kirim file ke WhatsApp (ganti nomor dengan nomor asli)
+    await sendDocx('6282128581976', outputPath);
+
 
     // Kirim file ke frontend dan hapus setelah dikirim
     res.download(outputPath, 'Surat_Pengajuan_KP.docx', (err) => {

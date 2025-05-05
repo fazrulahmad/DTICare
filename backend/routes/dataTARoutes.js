@@ -24,7 +24,23 @@ router.post('/', async (req, res) => {
     });
 
     // Isi template dengan data
-    doc.setData(formData);
+    // Pembersihan data kosong
+    const cleanFormData = { ...formData };
+
+    // Membersihkan daftar mahasiswa
+    if (Array.isArray(formData.mahasiswa)) {
+      cleanFormData.mahasiswa = formData.mahasiswa.filter(m => m.nama && m.nrp);
+    }
+
+    // Membersihkan daftar data yang diperlukan
+    if (Array.isArray(formData.kebutuhanData)) {
+      cleanFormData.kebutuhanData = formData.kebutuhanData.filter(item => item && item.trim() !== '');
+    } 
+
+// Set data ke template
+  doc.setData(cleanFormData);
+
+    doc.setData(cleanFormData);
     doc.render();
 
     const buffer = doc.getZip().generate({ type: 'nodebuffer' });

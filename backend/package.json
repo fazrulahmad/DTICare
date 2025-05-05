@@ -13,6 +13,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@whiskeysockets/baileys": "^6.17.16",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "docxtemplater": "^3.61.1",
@@ -21,9 +22,12 @@
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
     "libreoffice-convert": "^1.6.1",
+    "mime-types": "^3.0.1",
     "mongoose": "^8.14.1",
     "path": "^0.12.7",
-    "pizzip": "^3.1.8"
+    "pino": "^9.6.0",
+    "pizzip": "^3.1.8",
+    "qrcode-terminal": "^0.12.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"

@@ -2,21 +2,40 @@
   <div class="form-wrapper">
     <h2 class="form-title">Form Pengajuan Data Survei TA</h2>
     <form @submit.prevent="handleSubmit" class="form-body">
-      <input v-model="formData.nrp1" type="text" placeholder="NRP" class="form-input" />
-      <input v-model="formData.nama1" type="text" placeholder="Nama Mahasiswa" class="form-input" />
-      <input v-model="formData.nama_pejabat" type="text" placeholder="Nama Pejabat Tujuan" class="form-input" />
+      <div v-for="i in 5" :key="i">
+        <h3>Mahasiswa {{ i }}</h3>
+        <input v-model="formData[`nrp${i}`]" type="text" :placeholder="`NRP Mahasiswa ${i}`" class="form-input" />
+        <input v-model="formData[`nama${i}`]" type="text" :placeholder="`Nama Mahasiswa ${i}`" class="form-input" />
+      </div>
+      <h3>Data Institusi Tujuan</h3>
+      <input v-model="formData.nama_pejabat" type="text" placeholder="Nama Pejabat" class="form-input" />
       <input v-model="formData.nama_jabatan" type="text" placeholder="Jabatan Pejabat" class="form-input" />
       <input v-model="formData.nama_institusi" type="text" placeholder="Nama Institusi" class="form-input" />
       <input v-model="formData.alamat" type="text" placeholder="Alamat Institusi" class="form-input" />
-      <input v-model="formData.tgl_mulai" type="date" placeholder="Tanggal Mulai Survei" class="form-input" />
-      <input v-model="formData.tgl_selesai" type="date" placeholder="Tanggal Selesai Survei" class="form-input" />
+       
+      <h3>Rencana Pengambilan Data/Survei</h3>
+      <label class="form-label">Tanggal Mulai</label>
+      <input v-model="formData.tgl_mulai" type="date" class="form-input" />
+
+      <label class="form-label">Tanggal Selesai</label>
+      <input v-model="formData.tgl_selesai" type="date" class="form-input" />
+
+      <h3>Mata Kuliah Terkait</h3>
       <input v-model="formData.kode" type="text" placeholder="Kode Mata Kuliah" class="form-input" />
       <input v-model="formData.nama_mk" type="text" placeholder="Nama Mata Kuliah" class="form-input" />
       <input v-model="formData.nama_dosen" type="text" placeholder="Nama Dosen Pembimbing" class="form-input" />
-      <input v-model="formData.judul" type="text" placeholder="Judul TA / Topik" class="form-input" />
-      <textarea v-model="formData.data_yang_diperlukan1" placeholder="Data yang Diperlukan" class="form-input"></textarea>
-      <textarea v-model="formData.catatan" placeholder="Catatan Tambahan (opsional)" class="form-input"></textarea>
-      <input v-model="formData.tanggal_pengajuan" type="date" class="form-input" />
+      <input v-model="formData.judul" type="text" placeholder="Judul TA / Topik (isi dengan - jika tidak ada)" class="form-input" />
+
+      <div v-for="i in 5" :key="i">
+        <h3>Data yang diperlukan {{ i }}</h3>
+        <input v-model="formData[`data_yang_diperlukan${i}`]" type="text" :placeholder="`Data ${i} (isi dengan - jika tidak ada)`" class="form-input" />
+      </div>
+
+      <textarea v-model="formData.catatan" placeholder="Catatan Tambahan (isi dengan - jika tidak ada)" class="form-input"></textarea>
+
+      <label class="form-label">Tanggal Pengajuan</label>
+      <input v-model="formData.tanggal_pengajuan" type="date" placeholder="Tanggal pengajuan (dd/mm/yyyy)" class="form-input" />
+
       <input v-model="formData.nama_pengaju" type="text" placeholder="Nama Mahasiswa Pengaju" class="form-input" />
 
       <button type="submit" class="submit-btn">Kirim & Unduh Surat</button>
@@ -31,23 +50,36 @@ export default {
   data() {
     return {
       formData: {
-        nrp1: '',
-        nama1: '',
-        nama_pejabat: '',
-        nama_jabatan: '',
-        nama_institusi: '',
-        alamat: '',
-        tgl_mulai: '',
-        tgl_selesai: '',
-        kode: '',
-        nama_mk: '',
-        nama_dosen: '',
-        judul: '',
-        data_yang_diperlukan1: '',
-        catatan: '',
-        tanggal_pengajuan: '',
-        nama_pengaju: ''
-      }
+      nrp1: '',
+      nama1: '',
+      nrp2: '',
+      nama2: '',
+      nrp3: '',
+      nama3: '',
+      nrp4: '',
+      nama4: '',
+      nrp5: '',
+      nama5: '',
+      data_yang_diperlukan1: '',
+      data_yang_diperlukan2: '',
+      data_yang_diperlukan3: '',
+      data_yang_diperlukan4: '',
+      data_yang_diperlukan5: '',
+      nama_pejabat: '',
+      nama_jabatan: '',
+      nama_institusi: '',
+      alamat: '',
+      tgl_mulai: '',
+      tgl_selesai: '',
+      kode: '',
+      nama_mk: '',
+      nama_dosen: '',
+      judul: '',
+      catatan: '',
+      tanggal_pengajuan: '',
+      nama_pengaju: ''
+    }
+
     };
   },
   methods: {
@@ -69,23 +101,15 @@ export default {
         link.click();
 
         this.formData = {
-          nrp1: '',
-          nama1: '',
-          nama_pejabat: '',
-          nama_jabatan: '',
-          nama_institusi: '',
-          alamat: '',
-          tgl_mulai: '',
-          tgl_selesai: '',
-          kode: '',
-          nama_mk: '',
-          nama_dosen: '',
-          judul: '',
-          data_yang_diperlukan1: '',
-          catatan: '',
-          tanggal_pengajuan: '',
-          nama_pengaju: ''
+        nrp1: '', nama1: '', nrp2: '', nama2: '', nrp3: '', nama3: '',
+        nrp4: '', nama4: '', nrp5: '', nama5: '',
+        data_yang_diperlukan1: '', data_yang_diperlukan2: '', data_yang_diperlukan3: '',
+        data_yang_diperlukan4: '', data_yang_diperlukan5: '',
+        nama_pejabat: '', nama_jabatan: '', nama_institusi: '', alamat: '',
+        tgl_mulai: '', tgl_selesai: '', kode: '', nama_mk: '', nama_dosen: '',
+        judul: '', catatan: '', tanggal_pengajuan: '', nama_pengaju: ''
         };
+
 
         // Cleanup
         window.URL.revokeObjectURL(url);
