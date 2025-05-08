@@ -5,6 +5,10 @@ const PizZip = require('pizzip');
 const Docxtemplater = require('docxtemplater');
 const DataTA = require('../models/dataTAModel.js');
 
+const axios = require('axios');
+const FormData = require('form-data');
+require('dotenv').config(); // Load token dan chat ID dari .env
+
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -16,45 +20,63 @@ router.post('/', async (req, res) => {
     await newData.save();
 
     // Buka template
-    const content = fs.readFileSync(path.resolve(__dirname, '../templates/FormDataTA.docx'), 'binary');
+    const content = fs.readFileSync(
+      path.resolve(__dirname, '../templates/FormDataTA.docx'),
+      'binary'
+    );
     const zip = new PizZip(content);
     const doc = new Docxtemplater(zip, {
       paragraphLoop: true,
-      linebreaks: true
+      linebreaks: true,
     });
 
-    // Isi template dengan data
-    // Pembersihan data kosong
+    // Pembersihan field kosong
     const cleanFormData = { ...formData };
 
-    // Membersihkan daftar mahasiswa
     if (Array.isArray(formData.mahasiswa)) {
-      cleanFormData.mahasiswa = formData.mahasiswa.filter(m => m.nama && m.nrp);
+      cleanFormData.mahasiswa = formData.mahasiswa.filter(
+        (m) => m.nama && m.nrp
+      );
     }
 
-    // Membersihkan daftar data yang diperlukan
     if (Array.isArray(formData.kebutuhanData)) {
-      cleanFormData.kebutuhanData = formData.kebutuhanData.filter(item => item && item.trim() !== '');
-    } 
+      cleanFormData.kebutuhanData = formData.kebutuhanData.filter(
+        (item) => item && item.trim() !== ''
+      );
+    }
 
-// Set data ke template
-  doc.setData(cleanFormData);
-
+    // Isi data ke template
     doc.setData(cleanFormData);
     doc.render();
 
     const buffer = doc.getZip().generate({ type: 'nodebuffer' });
 
-    // Buat path untuk file sementara
-    const outputPath = path.resolve(__dirname, `../generated/Surat_DataTA_${Date.now()}.docx`);
+    // Path file sementara
+    const outputPath = path.resolve(
+      __dirname,
+      `../generated/Surat_DataTA_${Date.now()}.docx`
+    );
     fs.writeFileSync(outputPath, buffer);
 
-    // Kirim file sebagai download
+    // === Kirim file ke Telegram ===
+    const telegramForm = new FormData();
+    telegramForm.append('chat_id', process.env.TELEGRAM_CHAT_ID);
+    telegramForm.append('document', fs.createReadStream(outputPath));
+
+    await axios.post(
+      `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendDocument`,
+      telegramForm,
+      {
+        headers: telegramForm.getHeaders(),
+      }
+    );
+
+    // === Kirim file ke user frontend ===
     res.download(outputPath, 'Surat_Pengantar_Data_TA.docx', (err) => {
       if (err) console.error('Download error:', err);
-      // Hapus file setelah dikirim
-      fs.unlinkSync(outputPath);
+      fs.unlinkSync(outputPath); // Hapus file setelah dikirim
     });
+
   } catch (err) {
     console.error('Gagal proses surat:', err);
     res.status(500).json({ message: 'Gagal memproses surat.' });

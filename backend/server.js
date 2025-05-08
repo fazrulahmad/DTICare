@@ -8,7 +8,6 @@ const peminjamanRoutes = require('./routes/peminjamanRoutes.js');
 const rekomendasiRoutes = require('./routes/rekomendasiRoutes.js');
 const dataTARoutes = require('./routes/dataTARoutes.js');
 const dataKPRoutes = require('./routes/KPRoutes.js'); // 👉 Tambahan route untuk KP
-const { startWA } = require('./whatsapp/wa');
 
 
 
@@ -19,7 +18,6 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-startWA();
 // Routes
 app.use('/api/peminjaman', peminjamanRoutes);
 app.use('/api/rekomendasi', rekomendasiRoutes);
