@@ -6,7 +6,6 @@ require('dotenv').config();
 // Import semua route yang digunakan
 const peminjamanRoutes = require('./routes/peminjamanRoutes.js');
 const rekomendasiRoutes = require('./routes/rekomendasiRoutes.js');
-const statusRoutes = require('./routes/statusRoutes.js');
 const dataTARoutes = require('./routes/dataTARoutes.js');
 const dataKPRoutes = require('./routes/KPRoutes.js'); // 👉 Tambahan route untuk KP
 const { startWA } = require('./whatsapp/wa');
@@ -24,7 +23,6 @@ startWA();
 // Routes
 app.use('/api/peminjaman', peminjamanRoutes);
 app.use('/api/rekomendasi', rekomendasiRoutes);
-app.use('/api/status', statusRoutes);
 app.use('/api/dataTA', dataTARoutes);
 app.use('/api/dataKP', dataKPRoutes); // 👉 Endpoint pengajuan KP
 
