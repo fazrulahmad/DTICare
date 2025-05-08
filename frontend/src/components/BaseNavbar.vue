@@ -15,7 +15,6 @@
         class="nav-links"
       >
         <router-link to="/" class="nav-btn" @click="closeMenu">Dashboard</router-link>
-        <router-link to="/status-surat" class="nav-btn" @click="closeMenu">Status</router-link>
         <router-link to="/form-layanan" class="nav-btn" @click="closeMenu">Ajukan Surat</router-link>
 
         <i class="fas fa-user text-white text-lg md:ml-4 mt-2 md:mt-0"></i>
