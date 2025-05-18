@@ -9,7 +9,7 @@
           <option value="peminjaman">Peminjaman Ruangan</option>
           <option value="data-ta">Surat Pengantar Pengambilan Data TA</option>
           <option value="kp">Surat Pengantar Permohonan KP</option>
-          <option value="rekomendasi">Surat Rekomendasi Exchange/Beasiswa/Lomba</option>
+          <option value="rekomendasi">Surat Tugas Kompetisi</option>
         </select>
   
         <transition name="fade">
@@ -23,7 +23,7 @@
   import FormPeminjaman from '../components/forms/FormPeminjaman.vue'
   import FormDataTA from '../components/forms/FormDataTA.vue'
   import FormKP from '../components/forms/FormKP.vue'
-  import FormRekomendasi from '../components/forms/FormRekomendasi.vue'
+  import FormTugas from '../components/forms/FormTugas.vue'
   
   export default {
     data() {
@@ -40,8 +40,8 @@
             return FormDataTA
           case 'kp':
             return FormKP
-          case 'rekomendasi':
-            return FormRekomendasi
+          case 'tugas':
+            return FormTugas
           default:
             return null
         }

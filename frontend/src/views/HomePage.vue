@@ -33,8 +33,8 @@
             image="kerja-praktik.png"
           />
           <SuratCard 
-            title="Surat Rekomendasi Exchange/Beasiswa/Lomba" 
-            description="Surat rekomendasi resmi dari jurusan untuk keperluan beasiswa dan lainnya." 
+            title="Surat Tugas Kompetisi" 
+            description="Surat tugas untuk mengikuti kompetisi." 
             image="rekomendasi.png"
           />
         </div>
