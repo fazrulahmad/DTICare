@@ -31,7 +31,6 @@ const dataTASchema = new mongoose.Schema({
   catatan: { type: String, default: '' },
   tanggal_pengajuan: { type: Date, required: true },
   nama_pengaju: { type: String, required: true },
-  image: { type: String, default: '' }
 }, { timestamps: true });
 
 module.exports = mongoose.model('dataTA', dataTASchema);

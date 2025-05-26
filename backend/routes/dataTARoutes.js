@@ -3,9 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const PizZip = require('pizzip');
 const Docxtemplater = require('docxtemplater');
-const DataTA = require('../models/dataTAModel.js');
+const DataTA = require('../models/dataTAModel');
 const axios = require('axios');
 const FormData = require('form-data');
+const mqttClient = require('../mqttClient');
 require('dotenv').config();
 
 const router = express.Router();
@@ -13,12 +14,9 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const formData = req.body;
-
-    // Simpan ke DB
     const newData = new DataTA(formData);
     await newData.save();
 
-    // Load template
     const templatePath = path.resolve(__dirname, '../templates/FormDataTA.docx');
     const content = fs.readFileSync(templatePath, 'binary');
     const zip = new PizZip(content);
@@ -27,20 +25,14 @@ router.post('/', async (req, res) => {
       linebreaks: true,
     });
 
-    // Bersihkan data
     const cleanFormData = { ...formData };
     if (Array.isArray(formData.mahasiswa)) {
-      cleanFormData.mahasiswa = formData.mahasiswa.filter(
-        (m) => m.nama && m.nrp
-      );
+      cleanFormData.mahasiswa = formData.mahasiswa.filter(m => m.nama && m.nrp);
     }
     if (Array.isArray(formData.kebutuhanData)) {
-      cleanFormData.kebutuhanData = formData.kebutuhanData.filter(
-        (item) => item && item.trim() !== ''
-      );
+      cleanFormData.kebutuhanData = formData.kebutuhanData.filter(item => item && item.trim() !== '');
     }
 
-    // Generate dokumen
     doc.setData(cleanFormData);
     doc.render();
     const buffer = doc.getZip().generate({ type: 'nodebuffer' });
@@ -53,34 +45,40 @@ router.post('/', async (req, res) => {
     const telegramForm = new FormData();
     telegramForm.append('chat_id', process.env.TELEGRAM_CHAT_ID);
     telegramForm.append('document', fs.createReadStream(outputPath));
-
     await axios.post(
       `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendDocument`,
       telegramForm,
       { headers: telegramForm.getHeaders() }
     );
 
-    // Kirim ke WhatsApp
-    const sock = req.app.get('waSocket'); // Ambil dari app context
-    const fileBuffer = fs.readFileSync(outputPath);
-    const nomor = formData.nomorWA || process.env.WA_DEFAULT_NUMBER; // Ambil dari input atau fallback
+    // Kirim ke WhatsApp via MQTT
+    mqttClient.publish('wa/send', JSON.stringify({
+      filename,
+      path: outputPath,
+      number: process.env.WA_DEFAULT_NUMBER,
+      message: 'Dokumen Data TA siap dikirim via WhatsApp'
+    }));
 
-    if (sock && nomor) {
-      await sock.sendMessage(`${nomor}@s.whatsapp.net`, {
-        document: fileBuffer,
-        mimetype: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        fileName: filename,
-      });
-    }
-
-    // Kirim ke frontend
+    // Kirim file ke frontend dan hapus setelah selesai
     res.download(outputPath, 'Surat_Pengantar_Data_TA.docx', (err) => {
-      if (err) console.error('Download error:', err);
-      fs.unlinkSync(outputPath); // Hapus file setelah dikirim
-    });
+      if (err) {
+        console.error('Download error:', err);
+      } else {
+        console.log('File berhasil diunduh oleh klien.');
+      }
 
+      // Tambahkan delay penghapusan untuk memastikan WhatsApp selesai mengakses
+      setTimeout(() => {
+        if (fs.existsSync(outputPath)) {
+          fs.unlink(outputPath, (unlinkErr) => {
+            if (unlinkErr) console.error('Gagal menghapus file:', unlinkErr);
+            else console.log('File berhasil dihapus.');
+          });
+        }
+      }, 10000); // 10 detik
+    });
   } catch (err) {
-    console.error('Gagal proses surat:', err);
+    console.error('❌ Gagal proses surat:', err);
     res.status(500).json({ message: 'Gagal memproses surat.' });
   }
 });

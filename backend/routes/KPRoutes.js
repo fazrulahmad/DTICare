@@ -45,13 +45,11 @@ router.post('/', async (req, res) => {
     const outputPath = path.resolve(__dirname, `../generated/${fileName}.docx`);
     fs.writeFileSync(outputPath, buffer);
 
-    // Kirim file ke WhatsApp (ganti nomor dengan nomor asli)
-
 
     // Kirim file ke frontend dan hapus setelah dikirim
     res.download(outputPath, 'Surat_Pengajuan_KP.docx', (err) => {
       if (err) console.error('Download error:', err);
-      fs.unlinkSync(outputPath); // hapus file sementara
+      fs.unlinkSync(outputPath); 
     });
   } catch (err) {
     console.error('Gagal proses surat:', err);
