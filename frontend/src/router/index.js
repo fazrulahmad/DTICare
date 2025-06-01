@@ -15,9 +15,6 @@ const routes = [
         name: 'FormLayanan',
         component: FormLayanan
     },
-
- 
-  // route lainnya...
 ]
 
 const router = createRouter({
