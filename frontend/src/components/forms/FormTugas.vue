@@ -123,7 +123,6 @@ export default {
       
       try {
         await axios.post('http://localhost:5000/api/tugas', this.form);
-        alert('✅ Form berhasil dikirim!');
         
         // Reset form setelah submit
         this.form = {
@@ -136,9 +135,6 @@ export default {
           linkFilePendukung: ''
         };
       } catch (error) {
-        console.error(error);
-        alert('❌ Gagal mengirim form. Silakan coba lagi.');
-      } finally {
         this.isSubmitting = false;
       }
     }

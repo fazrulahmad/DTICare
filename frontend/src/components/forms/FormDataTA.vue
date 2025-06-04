@@ -283,15 +283,15 @@ export default {
         };
 
         // Cleanup
-        window.URL.revokeObjectURL(url);
-        link.remove();
-        alert('✅ Surat berhasil dibuat dan diunduh!');
-      } catch (error) {
-        console.error(error);
-        alert('❌ Gagal mengirim atau mengunduh surat. Silakan coba lagi.');
-      } finally {
-        this.isSubmitting = false;
-      }
+window.URL.revokeObjectURL(url);
+link.remove();
+this.$emit('show-success', '✅ Surat berhasil dibuat dan diunduh!');
+} catch (error) {
+console.error(error);
+this.$emit('show-error', '❌ Gagal mengirim atau mengunduh surat. Silakan coba lagi.');
+} finally {
+this.isSubmitting = false;
+}
     }
   }
 };

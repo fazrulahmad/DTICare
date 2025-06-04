@@ -14,7 +14,10 @@ export const ERROR_TYPES = {
   AUTHORIZATION: 'authorization',
   NOT_FOUND: 'not_found',
   SERVER: 'server',
-  UNKNOWN: 'unknown'
+  UNKNOWN: 'unknown',
+  RUNTIME: 'runtime',
+  PROMISE: 'promise',
+  CONSOLE: 'console'
 };
 
 // Error severity levels
@@ -24,6 +27,7 @@ export const ERROR_SEVERITY = {
   HIGH: 'error',
   CRITICAL: 'error'
 };
+
 
 class ErrorHandler {
   constructor() {
@@ -35,14 +39,15 @@ class ErrorHandler {
     // Handle unhandled promise rejections
     window.addEventListener('unhandledrejection', (event) => {
       console.error('Unhandled promise rejection:', event.reason);
-      this.handleError(event.reason, ERROR_TYPES.UNKNOWN, ERROR_SEVERITY.HIGH);
-      event.preventDefault();
+      this.handleError(event.reason, ERROR_TYPES.PROMISE, ERROR_SEVERITY.HIGH);
+      event.preventDefault(); // Prevent native browser dialog
     });
 
     // Handle JavaScript errors
     window.addEventListener('error', (event) => {
       console.error('JavaScript error:', event.error);
-      this.handleError(event.error, ERROR_TYPES.UNKNOWN, ERROR_SEVERITY.HIGH);
+      this.handleError(event.error, ERROR_TYPES.RUNTIME, ERROR_SEVERITY.HIGH);
+      event.preventDefault(); // Prevent native browser dialog
     });
   }
 
@@ -60,12 +65,13 @@ class ErrorHandler {
     // Log error for debugging
     console.error('Error handled:', errorInfo);
 
+    // DISABLED: Auto-remove is now handled by ErrorMessage component (10 seconds)
     // Auto-remove error after certain time for non-critical errors
-    if (severity !== ERROR_SEVERITY.CRITICAL) {
-      setTimeout(() => {
-        this.removeError(errorState.errors[errorState.errors.length - 1]?.id);
-      }, severity === ERROR_SEVERITY.LOW ? 3000 : 5000);
-    }
+    // if (severity !== ERROR_SEVERITY.CRITICAL) {
+    //   setTimeout(() => {
+    //     this.removeError(errorState.errors[errorState.errors.length - 1]?.id);
+    //   }, severity === ERROR_SEVERITY.LOW ? 3000 : 5000);
+    // }
 
     return errorInfo;
   }
@@ -146,6 +152,9 @@ class ErrorHandler {
       case ERROR_TYPES.AUTHORIZATION: return 'Akses Ditolak';
       case ERROR_TYPES.NOT_FOUND: return 'Tidak Ditemukan';
       case ERROR_TYPES.SERVER: return 'Kesalahan Server';
+      case ERROR_TYPES.RUNTIME: return 'Kesalahan JavaScript';
+      case ERROR_TYPES.PROMISE: return 'Promise Rejection';
+      case ERROR_TYPES.VUE: return 'Kesalahan Vue';
       default: return 'Kesalahan';
     }
   }
@@ -174,6 +183,9 @@ class ErrorHandler {
       case ERROR_TYPES.AUTHORIZATION: return 'Anda tidak memiliki izin.';
       case ERROR_TYPES.NOT_FOUND: return 'Resource tidak ditemukan.';
       case ERROR_TYPES.SERVER: return 'Terjadi kesalahan pada server.';
+      case ERROR_TYPES.RUNTIME: return 'Terjadi kesalahan JavaScript.';
+      case ERROR_TYPES.PROMISE: return 'Terjadi kesalahan promise.';
+      case ERROR_TYPES.VUE: return 'Terjadi kesalahan pada komponen Vue.';
       default: return 'Terjadi kesalahan yang tidak diketahui.';
     }
   }

@@ -333,25 +333,27 @@ export default {
         });
 
         // Reset form
-        this.formData = {
-          nomorSurat: '',
-          namaKegiatan: '',
-          hariTanggal: '',
-          pukul: '',
-          tempat: '',
-          nrp: '',
-          namaPengaju: '',
-          nomorHp: ''
-        };
-        this.uploadedFiles = [];
+this.formData = {
+  nomorSurat: '',
+  namaKegiatan: '',
+  hariTanggal: '',
+  pukul: '',
+  tempat: '',
+  nrp: '',
+  namaPengaju: '',
+  nomorHp: ''
+};
+this.uploadedFiles = [];
 
-        alert('✅ Form berhasil dikirim!');
-      } catch (error) {
-        console.error(error);
-        alert('❌ Gagal mengirim form. Silakan coba lagi.');
-      } finally {
-        this.isSubmitting = false;
-      }
+// alert('✅ Form berhasil dikirim!'); // Hapus ini
+this.showSuccessDialog('✅ Form berhasil dikirim!');
+} catch (error) {
+console.error(error);
+// alert('❌ Gagal mengirim form. Silakan coba lagi.'); // Hapus ini
+this.showErrorDialog('❌ Gagal mengirim form. Silakan coba lagi.');
+} finally {
+this.isSubmitting = false;
+}
     }
   }
 };

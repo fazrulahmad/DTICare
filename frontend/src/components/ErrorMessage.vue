@@ -30,6 +30,13 @@
             Lihat Detail
           </button>
         </div>
+        <!-- Progress bar untuk countdown -->
+        <div class="error-progress">
+          <div 
+            class="error-progress-bar" 
+            :class="`progress-${error.severity || error.type}`"
+          ></div>
+        </div>
       </div>
     </transition-group>
   </div>
@@ -42,7 +49,8 @@ export default {
   name: 'ErrorMessage',
   data() {
     return {
-      showDetails: false
+      showDetails: false,
+      timers: new Map() // Menyimpan timer untuk setiap error
     };
   },
   computed: {
@@ -50,13 +58,66 @@ export default {
       return errorState;
     }
   },
+  watch: {
+    // Watch perubahan pada error list
+    'errorState.errors': {
+      handler(newErrors, oldErrors) {
+        // Set timer untuk error baru
+        newErrors.forEach(error => {
+          if (!this.timers.has(error.id)) {
+            this.setAutoRemoveTimer(error.id);
+          }
+        });
+        
+        // Clear timer untuk error yang sudah dihapus
+        if (oldErrors) {
+          oldErrors.forEach(oldError => {
+            if (!newErrors.find(e => e.id === oldError.id)) {
+              this.clearTimer(oldError.id);
+            }
+          });
+        }
+      },
+      deep: true,
+      immediate: true
+    }
+  },
   methods: {
     removeError(errorId) {
+      this.clearTimer(errorId);
       errorHandler.removeError(errorId);
     },
     toggleDetails() {
       this.showDetails = !this.showDetails;
+    },
+    setAutoRemoveTimer(errorId) {
+      const timer = setTimeout(() => {
+        this.removeError(errorId);
+      }, 10000); // 10 detik
+      
+      this.timers.set(errorId, timer);
+    },
+    clearTimer(errorId) {
+      if (this.timers.has(errorId)) {
+        clearTimeout(this.timers.get(errorId));
+        this.timers.delete(errorId);
+      }
+    },
+    // Pause timer saat hover
+    pauseTimer(errorId) {
+      this.clearTimer(errorId);
+    },
+    // Resume timer saat mouse leave
+    resumeTimer(errorId) {
+      if (this.errorState.errors.find(e => e.id === errorId)) {
+        this.setAutoRemoveTimer(errorId);
+      }
     }
+  },
+  beforeUnmount() {
+    // Clear semua timer saat component di-unmount
+    this.timers.forEach(timer => clearTimeout(timer));
+    this.timers.clear();
   }
 };
 </script>
@@ -82,6 +143,13 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   animation: slideIn 0.3s ease-out;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Pause auto-remove saat hover */
+.error-item:hover .error-progress-bar {
+  animation-play-state: paused;
 }
 
 .error-header {
@@ -159,6 +227,48 @@ export default {
 
 .btn-details:hover {
   background: #e5e7eb;
+}
+
+/* Progress bar untuk countdown */
+.error-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.error-progress-bar {
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  animation: countdown 10s linear forwards;
+}
+
+.progress-error {
+  background: #ef4444;
+}
+
+.progress-warning {
+  background: #f59e0b;
+}
+
+.progress-info {
+  background: #3b82f6;
+}
+
+.progress-success {
+  background: #10b981;
+}
+
+@keyframes countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
 }
 
 /* Error type styles */
