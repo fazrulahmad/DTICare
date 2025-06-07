@@ -81,114 +81,64 @@
         />
       </div>
 
-      <!-- Enhanced File Upload Section -->
-      <div class="upload-section">
-        <label class="upload-label">Upload File Surat HMIT</label>
-        <div class="upload-description">
-          Silakan upload surat permohonan dari HMIT dalam format PDF atau DOCX
+      <!-- Google Drive Link Section -->
+      <div class="gdrive-section">
+        <label class="gdrive-label">Link Google Drive Surat HMIT</label>
+        <div class="gdrive-description">
+          Silakan masukkan link Google Drive yang berisi surat permohonan dari HMIT. Pastikan link dapat diakses oleh siapa saja dengan link tersebut.
         </div>
 
-        <!-- Upload Area -->
-        <div 
-          class="upload-area"
-          :class="{ 'drag-over': isDragOver, 'has-files': uploadedFiles.length > 0 }"
-          @dragover.prevent="handleDragOver"
-          @dragleave.prevent="handleDragLeave"
-          @drop.prevent="handleDrop"
-          @click="triggerFileInput"
-        >
+        <div class="gdrive-input-container">
+          <div class="gdrive-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#4285f4">
+              <path d="M6.5 8.5L12 2l5.5 6.5H6.5zM6 9h12l6 10.5H0L6 9zM7.5 10.5L4.5 16h3l3-5.5h-3z"/>
+            </svg>
+          </div>
           <input 
-            ref="fileInput"
-            type="file" 
-            @change="handleFileSelect" 
-            class="file-input-hidden" 
-            accept=".pdf,.docx,.doc"
-            multiple
+            v-model="formData.gdriveLink" 
+            type="url" 
+            placeholder="https://drive.google.com/file/d/..." 
+            class="gdrive-input" 
+            @input="validateGdriveLink"
+            :class="{ 'valid': isValidGdriveLink, 'invalid': formData.gdriveLink && !isValidGdriveLink }"
           />
-
-          <div class="upload-content" v-if="uploadedFiles.length === 0">
-            <div class="upload-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14,2 14,8 20,8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10,9 9,9 8,9"/>
-              </svg>
-            </div>
-            <div class="upload-text">
-              <strong>Choose a file or drag & drop it here.</strong>
-            </div>
-            <div class="upload-subtext">
-              PDF, DOC, and DOCX formats, up to 10 MB.
-            </div>
-            <button type="button" class="browse-btn" @click.stop="triggerFileInput">
-              Browse File
-            </button>
-          </div>
-
-          <!-- File List -->
-          <div class="file-list" v-if="uploadedFiles.length > 0">
-            <div 
-              class="file-item" 
-              v-for="(file, index) in uploadedFiles" 
-              :key="index"
-            >
-              <div class="file-icon">
-                <svg v-if="file.type === 'application/pdf'" width="24" height="24" viewBox="0 0 24 24" fill="#ff4757">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14,2 14,8 20,8"/>
-                  <text x="7" y="15" font-size="4" fill="white" font-weight="bold">PDF</text>
-                </svg>
-                <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="#2e86de">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14,2 14,8 20,8"/>
-                  <text x="6" y="15" font-size="3" fill="white" font-weight="bold">DOC</text>
-                </svg>
-              </div>
-              
-              <div class="file-info">
-                <div class="file-name">{{ file.name }}</div>
-                <div class="file-details">
-                  <span class="file-size">{{ formatFileSize(file.size) }}</span>
-                  <span class="file-status" :class="{ 'completed': file.status === 'completed', 'uploading': file.status === 'uploading' }">
-                    <span v-if="file.status === 'uploading'">📤 Uploading...</span>
-                    <span v-else-if="file.status === 'completed'">✅ Completed</span>
-                    <span v-else>⏳ Ready</span>
-                  </span>
-                </div>
-                <div v-if="file.status === 'uploading'" class="progress-bar">
-                  <div class="progress-fill" :style="{ width: file.progress + '%' }"></div>
-                </div>
-              </div>
-
-              <button 
-                type="button" 
-                class="remove-file-btn" 
-                @click="removeFile(index)"
-                :disabled="file.status === 'uploading'"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="18" y1="6" x2="6" y2="18"/>
-                  <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              </button>
-            </div>
+          <div class="validation-icon">
+            <svg v-if="isValidGdriveLink" width="20" height="20" viewBox="0 0 24 24" fill="#10b981">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+            <svg v-else-if="formData.gdriveLink && !isValidGdriveLink" width="20" height="20" viewBox="0 0 24 24" fill="#ef4444">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
           </div>
         </div>
 
-        <!-- Add more files button -->
-        <button 
-          v-if="uploadedFiles.length > 0" 
-          type="button" 
-          class="add-more-btn"
-          @click="triggerFileInput"
+        <div class="gdrive-help">
+          <div class="help-title">💡 Cara mendapatkan link Google Drive:</div>
+          <ol class="help-steps">
+            <li>Buka file di Google Drive</li>
+            <li>Klik kanan pada file → pilih "Bagikan" atau "Share"</li>
+            <li>Ubah akses menjadi "Siapa saja yang memiliki link dapat melihat"</li>
+            <li>Salin link dan tempelkan di kolom di atas</li>
+          </ol>
+        </div>
+
+        <div 
+          v-if="formData.gdriveLink && !isValidGdriveLink" 
+          class="error-message"
         >
-          + Add more files
-        </button>
+          ⚠️ Link Google Drive tidak valid. Pastikan menggunakan link dari Google Drive.
+        </div>
+
+        <div 
+          v-if="isValidGdriveLink" 
+          class="success-message"
+        >
+          ✅ Link Google Drive valid dan dapat diakses.
+        </div>
       </div>
 
-      <button type="submit" class="submit-btn" :disabled="isSubmitting">
+      <button type="submit" class="submit-btn" :disabled="isSubmitting || (formData.gdriveLink && !isValidGdriveLink)">
         <span v-if="isSubmitting">
           <svg class="loading-spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M21 12a9 9 0 11-6.219-8.56"/>
@@ -217,143 +167,77 @@ export default {
         tempat: '',
         nrp: '',
         namaPengaju: '',
-        nomorHp: ''
+        nomorHp: '',
+        gdriveLink: ''
       },
-      uploadedFiles: [],
-      isDragOver: false,
-      isSubmitting: false
+      isSubmitting: false,
+      isValidGdriveLink: false
     };
   },
   methods: {
-    triggerFileInput() {
-      this.$refs.fileInput.click();
-    },
+    validateGdriveLink() {
+      const link = this.formData.gdriveLink;
+      if (!link) {
+        this.isValidGdriveLink = false;
+        return;
+      }
 
-    handleDragOver(e) {
-      e.preventDefault();
-      this.isDragOver = true;
-    },
+      // Regex untuk validasi link Google Drive
+      const gdrivePatterns = [
+        /^https:\/\/drive\.google\.com\/file\/d\/[a-zA-Z0-9-_]+/,
+        /^https:\/\/docs\.google\.com\/document\/d\/[a-zA-Z0-9-_]+/,
+        /^https:\/\/docs\.google\.com\/spreadsheets\/d\/[a-zA-Z0-9-_]+/,
+        /^https:\/\/docs\.google\.com\/presentation\/d\/[a-zA-Z0-9-_]+/
+      ];
 
-    handleDragLeave(e) {
-      e.preventDefault();
-      this.isDragOver = false;
-    },
-
-    handleDrop(e) {
-      e.preventDefault();
-      this.isDragOver = false;
-      const files = Array.from(e.dataTransfer.files);
-      this.processFiles(files);
-    },
-
-    handleFileSelect(e) {
-      const files = Array.from(e.target.files);
-      this.processFiles(files);
-    },
-
-    processFiles(files) {
-      const validFiles = files.filter(file => {
-        const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-        const maxSize = 10 * 1024 * 1024; // 10MB
-        
-        if (!validTypes.includes(file.type)) {
-          alert(`File ${file.name} bukan format yang didukung. Silakan upload file PDF atau DOCX.`);
-          return false;
-        }
-        
-        if (file.size > maxSize) {
-          alert(`File ${file.name} terlalu besar. Maksimal ukuran file adalah 10MB.`);
-          return false;
-        }
-        
-        return true;
-      });
-
-      validFiles.forEach(file => {
-        const fileObj = {
-          file: file,
-          name: file.name,
-          size: file.size,
-          type: file.type,
-          status: 'ready',
-          progress: 0
-        };
-        
-        this.uploadedFiles.push(fileObj);
-        this.simulateUpload(fileObj);
-      });
-    },
-
-    simulateUpload(fileObj) {
-      fileObj.status = 'uploading';
-      
-      const interval = setInterval(() => {
-        fileObj.progress += Math.random() * 30;
-        
-        if (fileObj.progress >= 100) {
-          fileObj.progress = 100;
-          fileObj.status = 'completed';
-          clearInterval(interval);
-        }
-      }, 200);
-    },
-
-    removeFile(index) {
-      this.uploadedFiles.splice(index, 1);
-    },
-
-    formatFileSize(bytes) {
-      if (bytes === 0) return '0 Bytes';
-      const k = 1024;
-      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-      const i = Math.floor(Math.log(bytes) / Math.log(k));
-      return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+      this.isValidGdriveLink = gdrivePatterns.some(pattern => pattern.test(link));
     },
 
     async handleSubmit() {
       this.isSubmitting = true;
       
       try {
-        const payload = new FormData();
-        
-        // Add form data
-        for (const key in this.formData) {
-          payload.append(key, this.formData[key]);
-        }
-
-        // Add files
-        this.uploadedFiles.forEach((fileObj, index) => {
-          payload.append(`files[${index}]`, fileObj.file);
-        });
+        const payload = {
+          ...this.formData
+        };
 
         await axios.post('http://localhost:5000/api/peminjaman', payload, {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'application/json'
           }
         });
 
         // Reset form
-this.formData = {
-  nomorSurat: '',
-  namaKegiatan: '',
-  hariTanggal: '',
-  pukul: '',
-  tempat: '',
-  nrp: '',
-  namaPengaju: '',
-  nomorHp: ''
-};
-this.uploadedFiles = [];
+        this.formData = {
+          nomorSurat: '',
+          namaKegiatan: '',
+          hariTanggal: '',
+          pukul: '',
+          tempat: '',
+          nrp: '',
+          namaPengaju: '',
+          nomorHp: '',
+          gdriveLink: ''
+        };
+        this.isValidGdriveLink = false;
 
-// alert('✅ Form berhasil dikirim!'); // Hapus ini
-this.showSuccessDialog('✅ Form berhasil dikirim!');
-} catch (error) {
-console.error(error);
-// alert('❌ Gagal mengirim form. Silakan coba lagi.'); // Hapus ini
-this.showErrorDialog('❌ Gagal mengirim form. Silakan coba lagi.');
-} finally {
-this.isSubmitting = false;
-}
+        this.showSuccessDialog('✅ Form berhasil dikirim!');
+      } catch (error) {
+        console.error(error);
+        this.showErrorDialog('❌ Gagal mengirim form. Silakan coba lagi.');
+      } finally {
+        this.isSubmitting = false;
+      }
+    },
+
+    showSuccessDialog(message) {
+      // Implementasi dialog sukses
+      alert(message);
+    },
+
+    showErrorDialog(message) {
+      // Implementasi dialog error
+      alert(message);
     }
   }
 };
@@ -426,12 +310,16 @@ this.isSubmitting = false;
   transform: translateY(-1px);
 }
 
-/* Upload Section Styles */
-.upload-section {
+/* Google Drive Section Styles */
+.gdrive-section {
   margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(249, 250, 251, 0.8);
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
 }
 
-.upload-label {
+.gdrive-label {
   font-weight: 700;
   color: #374151;
   font-size: 1.1rem;
@@ -439,213 +327,111 @@ this.isSubmitting = false;
   display: block;
 }
 
-.upload-description {
+.gdrive-description {
   color: #6b7280;
   font-size: 0.9rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.5;
 }
 
-.upload-area {
-  border: 2px dashed #d1d5db;
-  border-radius: 20px;
-  padding: 2.5rem;
-  text-align: center;
-  background: rgba(249, 250, 251, 0.8);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
+.gdrive-input-container {
   position: relative;
-  min-height: 200px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 1rem;
 }
 
-.upload-area:hover {
-  border-color: #9ca3af;
-  background: rgba(243, 244, 246, 0.9);
-  transform: translateY(-2px);
-}
-
-.upload-area.drag-over {
-  border-color: #667eea;
-  background: rgba(102, 126, 234, 0.05);
-  transform: scale(1.02);
-}
-
-.upload-area.has-files {
-  border-style: solid;
-  border-color: #d1d5db;
-  background: white;
-  padding: 1.5rem;
-}
-
-.file-input-hidden {
-  display: none;
-}
-
-.upload-content {
+.gdrive-icon {
+  position: absolute;
+  left: 1rem;
+  z-index: 2;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 1rem;
 }
 
-.upload-icon {
-  color: #9ca3af;
-  opacity: 0.7;
-}
-
-.upload-text {
-  color: #374151;
-  font-size: 1.1rem;
-}
-
-.upload-subtext {
-  color: #9ca3af;
-  font-size: 0.9rem;
-}
-
-.browse-btn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-}
-
-.browse-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
-
-/* File List Styles */
-.file-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.gdrive-input {
   width: 100%;
+  padding: 1rem 1.25rem 1rem 3.5rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #374151;
+  padding-right: 3rem;
 }
 
-.file-item {
+.gdrive-input:focus {
+  border-color: #4285f4;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.1);
+  transform: translateY(-2px);
+}
+
+.gdrive-input.valid {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.gdrive-input.invalid {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.validation-icon {
+  position: absolute;
+  right: 1rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(249, 250, 251, 0.8);
+}
+
+.gdrive-help {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem;
   border-radius: 16px;
   border: 1px solid #e5e7eb;
-  transition: all 0.2s ease;
+  margin-top: 1rem;
 }
 
-.file-item:hover {
-  background: rgba(243, 244, 246, 0.9);
-  transform: translateX(4px);
-}
-
-.file-icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.file-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.file-name {
+.help-title {
   font-weight: 600;
   color: #374151;
+  margin-bottom: 0.75rem;
   font-size: 0.95rem;
-  margin-bottom: 0.25rem;
-  word-break: break-word;
 }
 
-.file-details {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.85rem;
-}
-
-.file-size {
+.help-steps {
   color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 1.25rem;
 }
 
-.file-status.uploading {
-  color: #3b82f6;
-  font-weight: 500;
+.help-steps li {
+  margin-bottom: 0.25rem;
 }
 
-.file-status.completed {
-  color: #10b981;
-  font-weight: 500;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background: #e5e7eb;
-  border-radius: 2px;
-  margin-top: 0.5rem;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  border-radius: 2px;
-  transition: width 0.3s ease;
-}
-
-.remove-file-btn {
-  background: none;
-  border: none;
-  color: #9ca3af;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-.remove-file-btn:hover:not(:disabled) {
-  color: #ef4444;
+.error-message {
   background: rgba(239, 68, 68, 0.1);
-}
-
-.remove-file-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.add-more-btn {
-  margin-top: 1rem;
-  background: white;
-  border: 2px dashed #d1d5db;
-  color: #667eea;
-  padding: 0.75rem 1.5rem;
+  color: #dc2626;
+  padding: 0.75rem 1rem;
   border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  align-self: flex-start;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
-.add-more-btn:hover {
-  border-color: #667eea;
-  background: rgba(102, 126, 234, 0.05);
+.success-message {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .submit-btn {
@@ -696,19 +482,16 @@ this.isSubmitting = false;
     font-size: 1.5rem;
   }
   
-  .upload-area {
+  .gdrive-section {
     padding: 1.5rem;
-    min-height: 150px;
   }
   
-  .file-item {
-    padding: 0.75rem;
+  .gdrive-help {
+    padding: 1rem;
   }
   
-  .file-details {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+  .help-steps {
+    padding-left: 1rem;
   }
 }
 </style>
