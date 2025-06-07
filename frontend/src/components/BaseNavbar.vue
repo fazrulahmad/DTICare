@@ -32,6 +32,11 @@
             <span class="nav-text">Ajukan Surat</span>
             <span class="nav-ripple"></span>
           </router-link>
+          <router-link to="/OurFacility" class="nav-btn" @click="closeMenu">
+            <span class="nav-icon">🏢</span>
+            <span class="nav-text">Our Facility</span>
+            <span class="nav-ripple"></span>
+          </router-link>
         </div>
       </div>
     </div>
@@ -358,6 +363,10 @@ export default {
 
 .nav-btn:nth-child(2) {
   animation-delay: 0.2s;
+}
+
+.nav-btn:nth-child(3) {
+  animation-delay: 0.3s;
 }
 
 .nav-btn:hover {

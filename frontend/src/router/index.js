@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import FormLayanan from '../views/FormLayanan.vue'
 import HomePage from '../views/HomePage.vue'
 import ErrorPageNotFound from '../components/Error404.vue' // UBAH NAMA IMPORT
+import OurFacility from '../views/ourfacility.vue'
 
 const routes = [
     {
@@ -14,6 +15,12 @@ const routes = [
         path: '/form-layanan',
         name: 'FormLayanan',
         component: FormLayanan
+    },
+
+    {
+        path: '/OurFacility',
+        name: 'ourfacility',
+        component: OurFacility
     },
     
     // 404 Error Route - HARUS DI PALING BAWAH
