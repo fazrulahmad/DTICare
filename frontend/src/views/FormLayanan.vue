@@ -31,7 +31,7 @@
                 <option value="peminjaman">📍 Peminjaman Ruangan</option>
                 <option value="data-ta">📊 Surat Pengantar Pengambilan Data TA</option>
                 <option value="kp">💼 Surat Pengantar Permohonan KP</option>
-                <option value="rekomendasi">🏆 Surat Tugas Kompetisi</option>
+                <option value="tugas">🏆 Surat Tugas Kompetisi</option>
               </select>
               <div class="select-arrow">▼</div>
             </div>
