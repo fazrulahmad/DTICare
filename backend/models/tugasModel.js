@@ -8,7 +8,6 @@ const RekomendasiSchema = new mongoose.Schema({
   penyelenggaraKegiatan: { type: String, required: true },
   lokasiKegiatan: { type: String, required: true },
   linkFilePendukung: { type: String, required: true },
-  status: { type: String, default: 'Pending' }
 });
 
 module.exports = mongoose.model('Rekomendasi', RekomendasiSchema);
