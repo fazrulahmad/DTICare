@@ -96,22 +96,37 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="400">
           <h3 class="gallery-title">Galeri Lab Perpustakaan</h3>
           <div class="expanding-cards">
-            <div class="card-placeholder" data-lab="kcks">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Lab KCKS</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-KCKS.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'kcks' }" 
+                 @click="setActiveCard('kcks')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Lab KCKS</h4>
+                  <p>Laboratorium Kota Cerdas dan Keamanan Siber</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-lab="iot-research">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Lab IoT Research</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-IoTpg.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'iot-research' }" 
+                 @click="setActiveCard('iot-research')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Lab IoT Research</h4>
+                  <p>Laboratorium Riset Internet of Things</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-lab="perpus-overview">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Overview</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-KCKS.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'perpus-overview' }" 
+                 @click="setActiveCard('perpus-overview')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Overview</h4>
+                  <p>Gambaran Umum Lab Perpustakaan</p>
+                </div>
               </div>
             </div>
           </div>
@@ -178,22 +193,37 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="800">
           <h3 class="gallery-title">Galeri Lab Tower 2</h3>
           <div class="expanding-cards">
-            <div class="card-placeholder" data-lab="soc">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Lab SOC</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-SoC.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'soc' }" 
+                 @click="setActiveCard('soc')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Lab SOC</h4>
+                  <p>Security Operation Center</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-lab="iot-practicum">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Lab IoT Practicum</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-IoT-TW2.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'iot-practicum' }" 
+                 @click="setActiveCard('iot-practicum')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Lab IoT Practicum</h4>
+                  <p>Laboratorium IoT Tower 2</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-lab="tower2-overview">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Tower 2 Overview</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-IoT-TW2.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'tower2-overview' }" 
+                 @click="setActiveCard('tower2-overview')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Tower 2 Overview</h4>
+                  <p>Gambaran Umum Lab Tower 2</p>
+                </div>
               </div>
             </div>
           </div>
@@ -273,28 +303,48 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="400">
           <h3 class="gallery-title">Galeri Ruang Kelas Tower 2</h3>
           <div class="expanding-cards">
-            <div class="card-placeholder" data-room="tw2-702">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>TW2-702</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw702.jpeg') + ')' }" 
+                 :class="{ active: activeCard === 'tw2-702' }" 
+                 @click="setActiveCard('tw2-702')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>TW2-702</h4>
+                  <p>Ruang Kelas 702</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-room="tw2-703">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>TW2-703</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw703.jpeg') + ')' }" 
+                 :class="{ active: activeCard === 'tw2-703' }" 
+                 @click="setActiveCard('tw2-703')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>TW2-703</h4>
+                  <p>Ruang Kelas 703</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-room="tw2-704">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>TW2-704</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw704.jpeg') + ')' }" 
+                 :class="{ active: activeCard === 'tw2-704' }" 
+                 @click="setActiveCard('tw2-704')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>TW2-704</h4>
+                  <p>Ruang Kelas 704</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-room="tw2-705">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>TW2-705</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw705.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'tw2-705' }" 
+                 @click="setActiveCard('tw2-705')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>TW2-705</h4>
+                  <p>Ruang Kelas 705</p>
+                </div>
               </div>
             </div>
           </div>
@@ -338,22 +388,37 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="700">
           <h3 class="gallery-title">Galeri Ruang Kelas Perpustakaan</h3>
           <div class="expanding-cards">
-            <div class="card-placeholder" data-room="it-608">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>IT-608</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-it608.jpeg') + ')' }" 
+                 :class="{ active: activeCard === 'it-608' }" 
+                 @click="setActiveCard('it-608')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>IT-608</h4>
+                  <p>Kelas Lab Riset</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-room="it-603">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>IT-603</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-KCKS.jpg') + ')' }" 
+                 :class="{ active: activeCard === 'it-603' }" 
+                 @click="setActiveCard('it-603')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>IT-603</h4>
+                  <p>Kelas Lab KCKS</p>
+                </div>
               </div>
             </div>
-            <div class="card-placeholder" data-room="perpus-class-overview">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📸</div>
-                <p>Overview</p>
+            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-it608.jpeg') + ')' }" 
+                 :class="{ active: activeCard === 'perpus-class-overview' }" 
+                 @click="setActiveCard('perpus-class-overview')"
+                 @mouseleave="resetActiveCard">
+              <div class="image-overlay">
+                <div class="image-content">
+                  <h4>Overview</h4>
+                  <p>Gambaran Umum Kelas Perpustakaan</p>
+                </div>
               </div>
             </div>
           </div>
