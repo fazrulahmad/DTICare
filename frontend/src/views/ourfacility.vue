@@ -918,6 +918,26 @@ export default {
   margin: 0 auto;
 }
 
+ /* Styling untuk setiap card image */
+.card-image {
+  flex: 1;
+  height: 100%; /* Menggunakan tinggi penuh dari container */
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  
+  /* KUNCI: Properti background untuk full image */
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  
+  /* Efek default untuk smooth transition */
+  filter: brightness(0.9);
+}
+
 /* Card yang tidak di-hover akan mengecil secara horizontal */
 .expanding-cards:hover .card-image:not(:hover) {
   flex: 0.7; /* Mengecil secara horizontal */
