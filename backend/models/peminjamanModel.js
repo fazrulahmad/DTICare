@@ -9,10 +9,8 @@ const PeminjamanSchema = new mongoose.Schema({
   nrp: { type: String, required: true },
   namaPengaju: { type: String, required: true },
   nomorHp: { type: String, required: true },
-  tanggalPengajuan: { type: Date, default: Date.now }, // kapan form diajukan
-  status: { type: String, default: 'Pending' }, // default status: Pending
-  filePdf: { type: Buffer },                    // isi file PDF sebagai binary buffer
-  contentType: { type: String }                 // tipe konten, misalnya 'application/pdf'
+  gdriveLink: { type: String }, // link ke Google Drive (boleh kosong)
+
 });
 
 module.exports = mongoose.model('Peminjaman', PeminjamanSchema);

@@ -21,7 +21,7 @@ const message = `
 📌 Nama Kegiatan: ${data.namaKegiatan}
 🏢 Penyelenggara: ${data.penyelenggaraKegiatan}
 📍 Lokasi: ${data.lokasiKegiatan}
-📎 Link File Pendukung: ${data.linkFilePendukung || 'Tidak ada'}
+📎 Link Google Drive File Pendukung: ${data.linkFilePendukung || 'Tidak ada'}
 `;
 // Kirim ke WhatsApp via MQTT
 mqttClient.publish('wa/send', JSON.stringify({
