@@ -96,36 +96,27 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="400">
           <h3 class="gallery-title">Galeri Lab Perpustakaan</h3>
           <div class="expanding-cards">
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-KCKS.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'kcks' }" 
-                 @click="setActiveCard('kcks')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-lab="kcks" :style="{ backgroundImage: `url(${require('@/assets/Lab-KCKS.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>Lab KCKS</h4>
-                  <p>Laboratorium Kota Cerdas dan Keamanan Siber</p>
+                  <p>Smart City & Cybersecurity</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-IoTpg.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'iot-research' }" 
-                 @click="setActiveCard('iot-research')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-lab="iot-research" :style="{ backgroundImage: `url(${require('@/assets/Lab-IoTpg.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>Lab IoT Research</h4>
-                  <p>Laboratorium Riset Internet of Things</p>
+                  <p>Internet of Things Lab</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-KCKS.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'perpus-overview' }" 
-                 @click="setActiveCard('perpus-overview')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-lab="perpus-overview" :style="{ backgroundImage: `url(${require('@/assets/Lab-IoT-TW2.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
-                  <h4>Overview</h4>
-                  <p>Gambaran Umum Lab Perpustakaan</p>
+                  <h4>Lab Overview</h4>
+                  <p>Modern Facilities</p>
                 </div>
               </div>
             </div>
@@ -193,36 +184,27 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="800">
           <h3 class="gallery-title">Galeri Lab Tower 2</h3>
           <div class="expanding-cards">
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-SoC.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'soc' }" 
-                 @click="setActiveCard('soc')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-lab="soc" :style="{ backgroundImage: `url(${require('@/assets/Lab-SoC.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>Lab SOC</h4>
-                  <p>Security Operation Center</p>
+                  <p>Security Operations Center</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-IoT-TW2.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'iot-practicum' }" 
-                 @click="setActiveCard('iot-practicum')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-lab="iot-practicum" :style="{ backgroundImage: `url(${require('@/assets/Lab-IoT-TW2.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>Lab IoT Practicum</h4>
-                  <p>Laboratorium IoT Tower 2</p>
+                  <p>Hands-on Learning</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-IoT-TW2.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'tower2-overview' }" 
-                 @click="setActiveCard('tower2-overview')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-lab="tower2-overview" :style="{ backgroundImage: `url(${require('@/assets/Lab-IoTpg.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>Tower 2 Overview</h4>
-                  <p>Gambaran Umum Lab Tower 2</p>
+                  <p>Modern Equipment</p>
                 </div>
               </div>
             </div>
@@ -303,47 +285,35 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="400">
           <h3 class="gallery-title">Galeri Ruang Kelas Tower 2</h3>
           <div class="expanding-cards">
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw702.jpeg') + ')' }" 
-                 :class="{ active: activeCard === 'tw2-702' }" 
-                 @click="setActiveCard('tw2-702')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="tw2-702" :style="{ backgroundImage: `url(${require('@/assets/kelas-tw702.jpeg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>TW2-702</h4>
-                  <p>Ruang Kelas 702</p>
+                  <p>Classroom 702</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw703.jpeg') + ')' }" 
-                 :class="{ active: activeCard === 'tw2-703' }" 
-                 @click="setActiveCard('tw2-703')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="tw2-703" :style="{ backgroundImage: `url(${require('@/assets/kelas-tw703.jpeg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>TW2-703</h4>
-                  <p>Ruang Kelas 703</p>
+                  <p>Classroom 703</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw704.jpeg') + ')' }" 
-                 :class="{ active: activeCard === 'tw2-704' }" 
-                 @click="setActiveCard('tw2-704')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="tw2-704" :style="{ backgroundImage: `url(${require('@/assets/kelas-tw704.jpeg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>TW2-704</h4>
-                  <p>Ruang Kelas 704</p>
+                  <p>Classroom 704</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-tw705.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'tw2-705' }" 
-                 @click="setActiveCard('tw2-705')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="tw2-705" :style="{ backgroundImage: `url(${require('@/assets/kelas-tw705.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>TW2-705</h4>
-                  <p>Ruang Kelas 705</p>
+                  <p>Classroom 705</p>
                 </div>
               </div>
             </div>
@@ -388,36 +358,27 @@
         <div class="photo-gallery" data-aos="fade-up" data-aos-delay="700">
           <h3 class="gallery-title">Galeri Ruang Kelas Perpustakaan</h3>
           <div class="expanding-cards">
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-it608.jpeg') + ')' }" 
-                 :class="{ active: activeCard === 'it-608' }" 
-                 @click="setActiveCard('it-608')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="it-608" :style="{ backgroundImage: `url(${require('@/assets/kelas-it608.jpeg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>IT-608</h4>
-                  <p>Kelas Lab Riset</p>
+                  <p>Research Lab Class</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/Lab-KCKS.jpg') + ')' }" 
-                 :class="{ active: activeCard === 'it-603' }" 
-                 @click="setActiveCard('it-603')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="it-603" :style="{ backgroundImage: `url(${require('@/assets/Lab-KCKS.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>IT-603</h4>
-                  <p>Kelas Lab KCKS</p>
+                  <p>KCKS Lab Class</p>
                 </div>
               </div>
             </div>
-            <div class="card-image" :style="{ backgroundImage: 'url(' + require('@/assets/kelas-it608.jpeg') + ')' }" 
-                 :class="{ active: activeCard === 'perpus-class-overview' }" 
-                 @click="setActiveCard('perpus-class-overview')"
-                 @mouseleave="resetActiveCard">
+            <div class="card-image" data-room="perpus-class-overview" :style="{ backgroundImage: `url(${require('@/assets/Lab-IoTpg.jpg')})` }">
               <div class="image-overlay">
                 <div class="image-content">
                   <h4>Overview</h4>
-                  <p>Gambaran Umum Kelas Perpustakaan</p>
+                  <p>Library Building</p>
                 </div>
               </div>
             </div>
@@ -653,213 +614,80 @@ export default {
 }
 
 .circle-1 {
-  width: 150px;
-  height: 150px;
-  top: 15%;
-  left: 15%;
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 10%;
   animation-delay: 0s;
 }
 
 .circle-2 {
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  right: 20%;
+  width: 120px;
+  height: 120px;
+  top: 60%;
+  right: 15%;
   animation-delay: 2s;
 }
 
 .circle-3 {
-  width: 80px;
-  height: 80px;
-  bottom: 25%;
-  left: 25%;
+  width: 60px;
+  height: 60px;
+  bottom: 30%;
+  left: 70%;
   animation-delay: 4s;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(180deg); }
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 2rem;
 }
 
 .hero-text {
+  color: white;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1s ease-out 0.5s forwards;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .hero-title {
-  margin-bottom: 2rem;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
 }
 
 .title-main {
   display: block;
-  font-size: 2rem;
-  font-weight: 300;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.5rem;
-  letter-spacing: 2px;
 }
 
 .title-highlight {
   display: block;
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: white;
-  background: linear-gradient(45deg, #ffffff, #f0f9ff, #e0f2fe);
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
-}
-
-.hero{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.facility-page {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
-  color: #1a202c;
-  overflow-x: hidden;
-}
-
-/* Hero Section */
-.hero-section {
-  min-height: 80vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  overflow: hidden;
-}
-
-.hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-.gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(102, 126, 234, 0.9) 0%,
-    rgba(118, 75, 162, 0.8) 50%,
-    rgba(6, 182, 212, 0.9) 100%
-  );
-}
-
-.floating-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.floating-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  backdrop-filter: blur(10px);
-  animation: float 6s ease-in-out infinite;
-}
-
-.circle-1 {
-  width: 150px;
-  height: 150px;
-  top: 15%;
-  left: 15%;
-  animation-delay: 0s;
-}
-
-.circle-2 {
-  width: 100px;
-  height: 100px;
-  top: 50%;
-  right: 20%;
-  animation-delay: 2s;
-}
-
-.circle-3 {
-  width: 80px;
-  height: 80px;
-  bottom: 25%;
-  left: 25%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(180deg); }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.hero-text {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease-out 0.5s forwards;
-}
-
-.hero-title {
-  margin-bottom: 2rem;
-}
-
-.title-main {
-  display: block;
-  font-size: 2rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 0.5rem;
-  letter-spacing: 2px;
-}
-
-.title-highlight {
-  display: block;
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: white;
-  background: linear-gradient(45deg, #ffffff, #f0f9ff, #e0f2fe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .hero-description {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 .scroll-indicator {
@@ -871,18 +699,24 @@ export default {
 }
 
 .scroll-arrow {
-  width: 20px;
-  height: 20px;
-  border-right: 2px solid rgba(255, 255, 255, 0.8);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+  width: 30px;
+  height: 30px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
   transform: rotate(45deg);
   animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
-  40% { transform: translateY(-10px) rotate(45deg); }
-  60% { transform: translateY(-5px) rotate(45deg); }
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  40% {
+    transform: translateY(-10px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(-5px) rotate(45deg);
+  }
 }
 
 @keyframes fadeInUp {
@@ -900,22 +734,13 @@ export default {
 }
 
 .laboratories-section,
-.classrooms-section,
-.features-section {
+.classrooms-section {
   padding: 6rem 0;
-  position: relative;
-}
-
-.laboratories-section {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #fafafa;
 }
 
 .classrooms-section {
-  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-}
-
-.features-section {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: white;
 }
 
 .section-header {
@@ -928,10 +753,19 @@ export default {
   font-weight: 700;
   color: #1a202c;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
 }
 
 .section-subtitle {
@@ -939,12 +773,11 @@ export default {
   color: #64748b;
   max-width: 600px;
   margin: 0 auto;
-  line-height: 1.8;
 }
 
 /* Facility Groups */
 .facility-group {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 
 .group-header {
@@ -957,57 +790,46 @@ export default {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   padding: 0.5rem 1.5rem;
-  border-radius: 50px;
+  border-radius: 25px;
   font-size: 0.875rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .group-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #1a202c;
   margin-bottom: 0.5rem;
 }
 
 .group-description {
-  color: #64748b;
   font-size: 1rem;
+  color: #64748b;
 }
 
-/* Lab Cards */
+/* Labs Grid */
 .labs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
 
 .lab-card {
   background: white;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-.lab-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  border: 1px solid #e2e8f0;
 }
 
 .lab-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 .lab-icon {
@@ -1017,35 +839,46 @@ export default {
 .icon-bg {
   width: 60px;
   height: 60px;
-  border-radius: 15px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
 }
 
-.icon-bg-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
-.icon-bg-2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
-.icon-bg-3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-.icon-bg-4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.icon-bg-1 {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.icon-bg-2 {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.icon-bg-3 {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.icon-bg-4 {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
 
 .icon-bg svg {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
 }
 
 .lab-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #1a202c;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   line-height: 1.4;
 }
 
 .lab-description {
   color: #64748b;
   margin-bottom: 1.5rem;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .lab-features {
@@ -1055,15 +888,15 @@ export default {
 }
 
 .feature-tag {
-  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  background: #f1f5f9;
   color: #475569;
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 
-/* Photo Gallery - Expanding Cards */
+/* Photo Gallery */
 .photo-gallery {
   margin-bottom: 4rem;
 }
@@ -1078,55 +911,55 @@ export default {
 
 .expanding-cards {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10px;
-  padding: 2rem 0;
-}
-
-.card-placeholder {
-  width: 80px;
+  gap: 1rem;
   height: 300px;
-  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-  border-radius: 20px;
-  cursor: pointer;
-  transition: width 0.5s ease-in-out, transform 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+.card-image {
+  flex: 1;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
   position: relative;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-.card-placeholder:hover {
-  width: 400px;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+.card-image:hover {
+  flex: 2;
 }
 
-.placeholder-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #64748b;
-  font-weight: 600;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 2rem 1.5rem 1.5rem;
+  color: white;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
-.card-placeholder:hover .placeholder-content {
+.card-image:hover .image-overlay {
+  transform: translateY(0);
   opacity: 1;
 }
 
-.placeholder-icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.image-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
-/* Classroom Cards */
+.image-content p {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+/* Classrooms Grid */
 .classrooms-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1140,91 +973,97 @@ export default {
 
 .classroom-card {
   background: white;
-  border-radius: 15px;
+  border-radius: 12px;
   padding: 1.5rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
 .classroom-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .classroom-card.special {
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  border: 2px solid #667eea;
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  border: 2px solid #e2e8f0;
 }
 
 .classroom-number {
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  padding: 1rem;
-  border-radius: 12px;
-  font-size: 1.1rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
-  text-align: center;
-  min-width: 80px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  font-size: 0.875rem;
+  flex-shrink: 0;
 }
 
 .special-number {
-  background: linear-gradient(135deg, #f093fb, #f5576c);
-  box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+  background: linear-gradient(135deg, #10b981, #059669);
 }
 
 .classroom-info h4 {
   font-size: 1.1rem;
   font-weight: 600;
   color: #1a202c;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .capacity {
   color: #64748b;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   margin-bottom: 0.75rem;
 }
 
 .classroom-features {
   display: flex;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  gap: 0.25rem;
 }
 
 .mini-feature {
-  background: #e2e8f0;
-  color: #475569;
-  padding: 0.2rem 0.5rem;
+  background: #e0e7ff;
+  color: #5b21b6;
+  padding: 0.125rem 0.5rem;
   border-radius: 12px;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   font-weight: 500;
 }
 
-/* Features Grid */
+/* Features Section */
+.features-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
 
 .feature-card {
   background: white;
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 2rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #e2e8f0;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 .feature-icon {
@@ -1234,15 +1073,15 @@ export default {
 }
 
 .feature-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: #1a202c;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .feature-description {
   color: #64748b;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 /* Footer */
@@ -1266,10 +1105,10 @@ export default {
 }
 
 .footer-brand h3 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #fbbf24, #f59e0b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1277,7 +1116,7 @@ export default {
 
 .footer-brand p {
   color: #a0aec0;
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .footer-info {
@@ -1290,34 +1129,35 @@ export default {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #e2e8f0;
+  color: #fbbf24;
 }
 
 .info-section p {
-  color: #a0aec0;
-  font-size: 0.9rem;
+  color: #cbd5e0;
   margin-bottom: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .footer-link {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  color: #a0aec0;
+  align-items: center;
+  color: #cbd5e0;
   text-decoration: none;
   padding: 0.5rem 0;
-  transition: color 0.3s ease;
-  border-bottom: 1px solid rgba(160, 174, 192, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .footer-link:hover {
-  color: #667eea;
+  color: #fbbf24;
+  padding-left: 0.5rem;
 }
 
 .link-arrow {
@@ -1329,14 +1169,14 @@ export default {
 }
 
 .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1rem;
   text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(160, 174, 192, 0.2);
 }
 
 .footer-bottom p {
   color: #a0aec0;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 }
 
 /* Animation Classes */
@@ -1353,39 +1193,34 @@ export default {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .title-main {
-    font-size: 1.5rem;
+  .hero-title {
+    font-size: 2.5rem;
   }
   
-  .title-highlight {
-    font-size: 2.5rem;
+  .hero-description {
+    font-size: 1.1rem;
   }
   
   .labs-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
   
-  .classrooms-grid {
-    grid-template-columns: 1fr;
+  .expanding-cards {
+    flex-direction: column;
+    height: auto;
   }
   
+  .card-image {
+    height: 200px;
+  }
+  
+  .classrooms-grid,
   .special-grid {
     grid-template-columns: 1fr;
   }
   
-  .expanding-cards {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .card-placeholder {
-    width: 60px;
-    height: 200px;
-  }
-  
-  .card-placeholder:hover {
-    width: 280px;
+  .features-grid {
+    grid-template-columns: 1fr;
   }
   
   .footer-main {
@@ -1397,25 +1232,19 @@ export default {
     grid-template-columns: 1fr;
   }
   
+  .section-container {
+    padding: 0 1rem;
+  }
+  
   .classroom-card {
     flex-direction: column;
     text-align: center;
   }
-  
-  .section-container {
-    padding: 0 1rem;
-  }
 }
 
 @media (max-width: 640px) {
-  .hero-section {
-    min-height: 70vh;
-  }
-  
-  .laboratories-section,
-  .classrooms-section,
-  .features-section {
-    padding: 4rem 0;
+  .hero-title {
+    font-size: 2rem;
   }
   
   .section-title {
@@ -1426,8 +1255,32 @@ export default {
     font-size: 1.5rem;
   }
   
-  .features-grid {
-    grid-template-columns: 1fr;
+  .lab-card,
+  .feature-card {
+    padding: 1.5rem;
   }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
 }
 </style>
