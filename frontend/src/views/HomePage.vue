@@ -48,8 +48,8 @@
     <section class="services-section" ref="servicesSection">
       <div class="section-container">
         <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Layanan Kami</h2>
-          <p class="section-subtitle">Berbagai jenis surat dan layanan administratif untuk kebutuhan akademik Anda</p>
+          <h2 class="section-title2">Layanan Kami</h2>
+          <p class="section-subtitle2">Berbagai jenis surat dan layanan administratif untuk kebutuhan akademik Anda</p>
         </div>
         
         <div class="services-grid">
@@ -555,26 +555,43 @@ export default {
 .section-title {
   font-size: 3rem;
   font-weight: 700;
-  color: #1a202c;
+  color: #F9F6EE;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .section-subtitle {
   font-size: 1.2rem;
-  color: #64748b;
+  color: #F9F6EE;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 1rem;
+  background-clip: text;
+}
+
+.section-subtitle2 {
+  font-size: 1.2rem;
+  color: #000000;
   max-width: 600px;
   margin: 0 auto;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 0;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 4rem;
+  max-width: 1200px; /* Optional: limit maximum width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-card {

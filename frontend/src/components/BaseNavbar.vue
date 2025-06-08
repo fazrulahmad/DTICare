@@ -120,10 +120,11 @@ export default {
 <style scoped>
 /* Base Navbar Styles */
 .navbar {
-  width: 100%;
+  width: auto; /* Ubah dari auto ke 100% */
   position: fixed;
   top: 0;
   left: 0;
+  right: 0; /* Tambahkan right: 0 untuk memastikan full width */
   background: linear-gradient(
     135deg, 
     rgba(102, 126, 234, 0.95) 0%, 
@@ -134,7 +135,7 @@ export default {
   color: white;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem; /* Perbesar padding horizontal */
   box-shadow: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   overflow: visible;
@@ -153,12 +154,14 @@ export default {
 }
 
 .navbar-content {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: none; /* Hilangkan max-width agar bisa full width */
+  margin: 0;
+  width: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  padding: 0 1rem; /* Tambahkan padding internal */
 }
 
 /* Logo Section */

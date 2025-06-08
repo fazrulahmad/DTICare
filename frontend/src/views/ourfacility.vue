@@ -898,28 +898,43 @@ export default {
 
 /* Photo Gallery */
 .photo-gallery {
-  margin-bottom: 4rem;
+  margin: 4rem 0;
+  padding: 0 2rem;
 }
 
 .gallery-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1a202c;
   text-align: center;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 3rem;
 }
 
 .expanding-cards {
   display: flex;
   gap: 1rem;
-  height: 300px;
+  height: 400px; /* Tinggi tetap */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.card-image {
-  flex: 1;
-  border-radius: 12px;
-  background-size: cover;
-  background-position: center;
+/* Card yang tidak di-hover akan mengecil secara horizontal */
+.expanding-cards:hover .card-image:not(:hover) {
+  flex: 0.7; /* Mengecil secara horizontal */
+  filter: brightness(0.6) blur(1px);
+  /* Tidak menggunakan transform scale agar tinggi tetap */
+}
+
+.card-placeholder {
+  width: 80px;
+  height: 300px;
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: width 0.5s ease-in-out, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   cursor: pointer;
   transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -962,9 +977,14 @@ export default {
 /* Classrooms Grid */
 .classrooms-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  padding: 0 100px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+  max-width: 1200px; /* Optional: limit maximum width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .special-grid {
@@ -1047,8 +1067,14 @@ export default {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 0 100px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 2rem;
+  margin-top: 4rem;
+  max-width: 1200px; /* Optional: limit maximum width */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .feature-card {
@@ -1206,9 +1232,142 @@ export default {
   }
   
   .expanding-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+ /* Styling untuk setiap card image */
+.card-image {
+  flex: 1;
+  min-width: 100%;
+  height: 100%; /* Menggunakan tinggi penuh dari container */
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  
+  /* KUNCI: Properti background untuk full image */
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+  
+  /* Efek default untuk smooth transition */
+  filter: brightness(0.9);
+}
+
+/* Ketika card aktif (dipilih/hover) */
+.card-image.active {
+  flex: 3;
+  transform: scale(1.02);
+}
+
+/* Hover effect untuk card yang tidak aktif */
+.card-image:not(.active):hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Overlay untuk konten text */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Konten text di dalam overlay */
+.image-content {
+  color: white;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+/* Hover effect - card akan expand secara horizontal (X-axis) ketika di-hover */
+.card-image:hover {
+  flex: 3; /* Melebar secara horizontal */
+  /* Tidak menggunakan transform scale agar tinggi tetap */
+  filter: brightness(1.1);
+  z-index: 10;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Tampilkan konten ketika di-hover */
+.card-image:hover .image-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Styling untuk title dan description */
+.image-content h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.image-content p {
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.4;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .expanding-cards {
     flex-direction: column;
     height: auto;
+    gap: 1rem;
   }
+  
+  .card-image {
+    height: 200px;
+    flex: none;
+  }
+  
+  .card-image.active {
+    flex: none;
+    height: 300px;
+  }
+  
+  .gallery-title {
+    font-size: 2rem;
+  }
+  
+  .photo-gallery {
+    padding: 0 1rem;
+  }
+}
+
+/* Animasi masuk untuk gallery */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.photo-gallery[data-aos="fade-up"] {
+  animation: fadeInUp 0.8s ease-out;
+}
   
   .card-image {
     height: 200px;
