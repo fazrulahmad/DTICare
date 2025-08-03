@@ -29,6 +29,7 @@
               <select v-model="jenis" class="form-select">
                 <option disabled value="">-- Pilih Layanan --</option>
                 <option value="peminjaman">📍 Peminjaman Ruangan</option>
+                <option value="peminjaman-barang">📦 Peminjaman Barang</option>
                 <option value="data-ta">📊 Surat Pengantar Pengambilan Data TA</option>
                 <option value="kp">💼 Surat Pengantar Permohonan KP</option>
                 <option value="tugas">🏆 Surat Tugas Kompetisi</option>
@@ -63,6 +64,7 @@
 
 <script>
 import FormPeminjaman from '../components/forms/FormPeminjaman.vue'
+import FormPeminjamanBarang from '../components/forms/FormPeminjamanBarang.vue'
 import FormDataTA from '../components/forms/FormDataTA.vue'
 import FormKP from '../components/forms/FormKP.vue'
 import FormTugas from '../components/forms/FormTugas.vue'
@@ -78,6 +80,8 @@ export default {
       switch (this.jenis) {
         case 'peminjaman':
           return FormPeminjaman
+        case 'peminjaman-barang':
+          return FormPeminjamanBarang
         case 'data-ta':
           return FormDataTA
         case 'kp':
