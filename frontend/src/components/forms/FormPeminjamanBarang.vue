@@ -128,7 +128,7 @@
           <input 
             v-model="formData.gdriveLink" 
             type="url" 
-            placeholder="https://drive.google.com/file/d/..." 
+            placeholder="https://drive.google.com/drive/folders/1aXgt-IqtMqwij7wiwesN_91NoopFGEe4?usp=drive_link" 
             class="gdrive-input" 
             @input="validateGdriveLink"
             :class="{ 'valid': isValidGdriveLink, 'invalid': formData.gdriveLink && !isValidGdriveLink }"
