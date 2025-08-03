@@ -48,10 +48,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+// Fixed MongoDB connection - removed deprecated options
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   console.log('✅ MongoDB Connected!');
   app.listen(PORT, () => {
