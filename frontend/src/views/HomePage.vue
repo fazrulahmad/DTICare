@@ -44,7 +44,7 @@
       </div>
     </section>
 
-    <!-- Services Section -->
+<!-- Services Section -->
     <section class="services-section" ref="servicesSection">
       <div class="section-container">
         <div class="section-header" data-aos="fade-up">
@@ -53,26 +53,51 @@
         </div>
         
         <div class="services-grid">
+          <!-- Peminjaman Ruangan -->
           <div class="service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="card-icon">
               <div class="icon-bg icon-bg-1">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 7V17A2 2 0 0 0 5 19H19A2 2 0 0 0 21 17V7"/>
-                  <path d="M21 7L12 13L3 7"/>
-                  <rect x="3" y="5" width="18" height="2"/>
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <rect x="8" y="7" width="8" height="6" rx="1"/>
                 </svg>
               </div>
             </div>
-            <h3 class="card-title">Surat Peminjaman</h3>
-            <p class="card-description">Ajukan surat peminjaman ruangan atau alat untuk keperluan akademik dengan proses yang mudah dan cepat.</p>
+            <h3 class="card-title">Surat Peminjaman Ruangan</h3>
+            <p class="card-description">Ajukan surat peminjaman ruangan kelas, laboratorium, atau fasilitas kampus untuk keperluan akademik dan kegiatan mahasiswa.</p>
             <div class="card-footer">
-              <button class="card-button" @click="navigateToForm('peminjaman')">
+              <button class="card-button" @click="navigateToForm('peminjaman-ruangan')">
                 <span class="button-text">Ajukan Sekarang</span>
                 <span class="button-icon">→</span>
               </button>
             </div>
           </div>
 
+          <!-- Peminjaman Barang -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+            <div class="card-icon">
+              <div class="icon-bg icon-bg-5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 2L3 6V20A2 2 0 0 0 5 22H19A2 2 0 0 0 21 20V6L18 2Z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M12 11V16"/>
+                  <path d="M9 13.5L12 11L15 13.5"/>
+                </svg>
+              </div>
+            </div>
+            <h3 class="card-title">Surat Peminjaman Barang</h3>
+            <p class="card-description">Ajukan surat peminjaman peralatan, inventaris, atau aset departemen untuk keperluan akademik dan penelitian.</p>
+            <div class="card-footer">
+              <button class="card-button" @click="navigateToForm('peminjaman-barang')">
+                <span class="button-text">Ajukan Sekarang</span>
+                <span class="button-icon">→</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Surat Pengantar TA -->
           <div class="service-card" data-aos="fade-up" data-aos-delay="200">
             <div class="card-icon">
               <div class="icon-bg icon-bg-2">
@@ -94,7 +119,8 @@
             </div>
           </div>
 
-          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <!-- Surat Kerja Praktik -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="250">
             <div class="card-icon">
               <div class="icon-bg icon-bg-3">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -114,7 +140,8 @@
             </div>
           </div>
 
-          <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <!-- Surat Tugas Kompetisi -->
+          <div class="service-card" data-aos="fade-up" data-aos-delay="300">
             <div class="card-icon">
               <div class="icon-bg icon-bg-4">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -188,8 +215,7 @@
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
+<!-- Footer -->
     <footer class="footer" data-aos="fade-up">
       <div class="footer-content">
         <div class="footer-main">
@@ -211,8 +237,12 @@
             <div class="info-section">
               <h4>Layanan</h4>
               <div class="footer-links">
-                <a href="#" @click.prevent="navigateToForm('peminjaman')" class="footer-link">
-                  <span>Surat Peminjaman</span>
+                <a href="#" @click.prevent="navigateToForm('peminjaman-ruangan')" class="footer-link">
+                  <span>Surat Peminjaman Ruangan</span>
+                  <span class="link-arrow">→</span>
+                </a>
+                <a href="#" @click.prevent="navigateToForm('peminjaman-barang')" class="footer-link">
+                  <span>Surat Peminjaman Barang</span>
                   <span class="link-arrow">→</span>
                 </a>
                 <a href="#" @click.prevent="navigateToForm('pengantar-ta')" class="footer-link">
@@ -232,11 +262,26 @@
           </div>
         </div>
         
+        <!-- Team Credentials Section -->
+        <div class="team-credentials" data-aos="fade-up" data-aos-delay="200">
+          <div class="credentials-container">
+            <div class="credentials-content">
+              <h4 class="credentials-title">Dikembangkan oleh</h4>
+              <p class="credentials-subtitle">3AAA IT05 Excelsior</p>
+            </div>
+            <div class="credentials-image">
+              <img src="@/assets/3aaa.png" alt="Team Credentials" class="team-logo" />
+              <div class="image-glow"></div>
+            </div>
+          </div>
+        </div>
+        
         <div class="footer-bottom">
-          <p>&copy; 2024 Departemen Teknologi Informasi ITS. All rights reserved.</p>
+          <p>&copy; 2025 Departemen Teknologi Informasi ITS. All rights reserved.</p>
         </div>
       </div>
     </footer>
+
   </div>
 </template>
 
@@ -533,7 +578,277 @@ export default {
   40% { transform: translateY(-10px); }
   60% { transform: translateY(-5px); }
 }
+.services-section {
+  padding: 8rem 2rem;
+  background: linear-gradient(to bottom, #f8fafc, #ffffff);
+}
 
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #F9F6EE;
+  margin-bottom: 1rem;
+  background-clip: text;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #F9F6EE;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title2 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 1rem;
+  background-clip: text;
+}
+
+.section-subtitle2 {
+  font-size: 1.2rem;
+  color: #000000;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  padding: 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make first card span 2 columns to create asymmetric layout */
+.service-card:first-child {
+  grid-column: span 2;
+}
+
+.service-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  margin-bottom: 1.5rem;
+}
+
+.icon-bg {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icon-bg svg {
+  width: 28px;
+  height: 28px;
+  color: white;
+}
+
+.icon-bg-1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+.icon-bg-2 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.icon-bg-3 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.icon-bg-4 { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.icon-bg-5 { background: linear-gradient(135deg, #fa709a, #fee140); }
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.card-footer {
+  margin-top: auto;
+}
+
+.card-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  width: 100%;
+}
+
+.card-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #5a67d8, #6b46c1);
+}
+
+.card-button:active {
+  transform: translateY(0) scale(0.98);
+  transition: all 0.1s ease;
+}
+
+.button-text {
+  transition: transform 0.3s ease;
+}
+
+.button-icon {
+  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.card-button:hover .button-icon {
+  transform: translateX(4px);
+}
+
+.card-button:hover .button-text {
+  transform: translateX(-2px);
+}
+
+/* Ripple Effect */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-animation 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+/* Loading state for button */
+.card-button.loading {
+  pointer-events: none;
+  background: linear-gradient(135deg, #a0aec0, #cbd5e0);
+}
+
+.card-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design for Services */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .service-card:first-child {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .service-card:first-child {
+    grid-column: span 1;
+  }
+  
+  .service-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section {
+    padding: 4rem 1rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem;
+  }
+}
 /* Services Section */
 .services-section {
   padding: 8rem 2rem;
@@ -962,6 +1277,148 @@ export default {
   }
 }
 
+/* Team Credentials Section */
+.team-credentials {
+  margin: 3rem 0 2rem 0;
+  padding: 2rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, 
+    rgba(102, 126, 234, 0.1) 0%, 
+    rgba(118, 75, 162, 0.1) 50%, 
+    rgba(6, 182, 212, 0.1) 100%
+  );
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-credentials::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.05), 
+    transparent
+  );
+  transition: left 2s ease;
+}
+
+.team-credentials:hover::before {
+  left: 100%;
+}
+
+.credentials-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.credentials-content {
+  flex: 1;
+  text-align: left;
+}
+
+.credentials-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #ffffff, #e0f2fe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.credentials-subtitle {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.credentials-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+}
+
+.image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(
+    circle, 
+    rgba(102, 126, 234, 0.3) 0%, 
+    rgba(118, 75, 162, 0.2) 50%, 
+    transparent 70%
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.4s ease;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.team-credentials:hover .team-logo {
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 8px 20px rgba(102, 126, 234, 0.4));
+}
+
+.team-credentials:hover .image-glow {
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.team-credentials:hover .credentials-title {
+  background: linear-gradient(45deg, #667eea, #764ba2, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradient-shift 1s ease-in-out;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .footer-bottom {
   border-top: 1px solid #374151;
   padding-top: 2rem;
@@ -969,6 +1426,65 @@ export default {
   color: #94a3b8;
 }
 
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+  .footer-main,
+  .footer-info {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* Team Credentials Mobile */
+  .team-credentials {
+    margin: 2rem 0 1.5rem 0;
+    padding: 1.5rem;
+  }
+  
+  .credentials-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    max-width: 300px;
+  }
+  
+  .credentials-content {
+    text-align: center;
+  }
+  
+  .team-logo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .image-glow {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-credentials {
+    padding: 1.2rem;
+  }
+  
+  .credentials-title {
+    font-size: 1.1rem;
+  }
+  
+  .credentials-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .team-logo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .image-glow {
+    width: 80px;
+    height: 80px;
+  }
+}
 /* Animations */
 @keyframes fadeInUp {
   to {
